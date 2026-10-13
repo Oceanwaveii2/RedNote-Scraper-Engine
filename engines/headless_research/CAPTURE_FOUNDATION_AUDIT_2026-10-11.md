@@ -1,0 +1,40 @@
+# RedNote capture and archive foundation audit — 2026-10-11
+
+This report separates the captured source, a disposable Red Engine index, and the two live processes. It does not treat the read-only mirror view as a capture worker or a graph datastore.
+
+The later controlled repair, hidden capture window, conservative pacing, live progress display, and final coverage counts are recorded in [CAPTURE_REPAIR_EXECUTION_2026-10-11.md](CAPTURE_REPAIR_EXECUTION_2026-10-11.md). Figures below are the initial audit snapshot.
+
+## Verified archive state
+
+- The v2 mirror contains 1 profile, 247 posts, 10,712 comments, 18,295 asset records, and 1,368 recorded local files. SQLite `quick_check` returned `ok`.
+- All 248 imported profile/post JSON files still match their recorded SHA-256 revisions. All 1,368 recorded local files match recorded sizes and SHA-256 values, totaling 421,431,838 bytes. The audit changed neither source database during its run.
+- A separate read-only decode pass fully loaded all 1,357 saved images and decoded the first frame of all 11 saved videos with no failures. This does not establish full-length playback or audio decoding. Result: `data/media-decode-2026-10-11.json`.
+- The smaller legacy database contains 2 profiles, 2 posts, 500 comments and 1 media row. One profile and one post ID overlap the v2 mirror. The other profile and post are legacy-only; none of the 500 legacy comment IDs overlap within their posts. These records have been copied into a **separate derived index** as `overlap_unmerged` or `legacy_only_unmerged`, with original row JSON and a row hash. No identity or comment has been silently merged into the mirror.
+- Every v2 post is marked `partial`. There are 19 comments with a parent source ID absent from the captured post. There are no database-orphan comments or asset owners.
+- Local post media is strong: all 1,325 image, 11 video and 16 cover asset records have files. Discussion media is incomplete: 18 of 11,489 comment attachment records and 10 of 5,454 avatar records have a local file. An asset record with a source URL is not an archived file.
+
+Machine-readable reports: `data/archive-audit-2026-10-11.json` (before opening the native app) and `data/archive-audit-live-2026-10-11.json` (after). The disposable `data/source-index.sqlite` indexes 247 post and 10,712 comment texts with a trigram search table and stores the legacy rows separately. `archive_foundation.py index` rebuilds it atomically, checks the source hash, and never writes to captured source tables.
+
+The metadata snapshot at `data/snapshots/20261011T081429Z` contains SQLite-backup copies of both databases, all 248 imported JSON files, and a media hash/path manifest. Every copied JSON was hash checked. It deliberately does **not** duplicate the 421 MB of media bytes because the D: drive had only about 1.69 GB free during the audit; media disaster recovery is still an open backup gate.
+
+Opening the native RedNote application changed the **SQLite file byte hash** from `6d768aa7997ba9f364e631b73421d42495310a0618f0facd310f7746da50a67b` to `7a21a4c6556290223a8105b94fafbe5690a4e957a5cafc0900f83c7367f51d65`. Counts, imported revisions and all recorded media hashes remained the same. Byte identity is therefore not a stable source revision while the native owner opens the database. Study pin checks use record hashes; the disposable index was rebuilt against the new file hash. A future archive snapshot should use SQLite's backup API plus a source manifest rather than treating the live database file hash as a content revision.
+
+## Capture bottlenecks and process boundary
+
+1. **Deliberate site pacing dominates known time.** The paused job recorded 2,188 seconds of pacing and 784 seconds of transfer time across 509 successful transfer attempts. Its configured delays are 25 seconds between posts, 10 seconds between media requests and 1.5 seconds after page advances. These limits protect the normal app-owned browsing flow; reducing them without a controlled, source-approved trial would risk rate limits and lower coverage.
+2. **Frequent whole-queue checkpoints cause avoidable local work.** The queue file is 1,569,719 bytes on disk and `_checkpoint()` recomputes counters across all posts, then writes the entire JSON on many page and attachment steps. Serializing the current data with compact JSON reduces the payload from about 1.53 MB to 0.99 MB. Source `profile_clone.py` and the now-running staged r5 package use compact JSON with the same schema and atomic replacement. An offline eight-iteration probe measured median 1.64 ms counters, 17.16 ms encoding and 4.44 ms temporary-file write; it did not alter the live queue.
+3. **Discussion backfill is the main coverage gap.** The retained queue has 247 posts, of which 181 have proven content completeness and 67 have partial comment trees, but the overall job is paused. The collector intentionally defers discussion attachments until after post content in batch mode. There is no evidence that the 16,915 assets without files are corrupt; most are remote discussion attachments or avatars not yet archived. Coverage must stay partial until a controlled resume and per-post reconciliation.
+4. **Restart re-enumeration is expensive.** Signed navigation URLs are transient by design. After restart the collector must revisit normally exposed profile cards to recover links. The checkpoint shows 95 posts freshly observed in the current re-enumeration out of 247 retained. A later optimization should measure targeted link recovery and cache safe canonical IDs, without persisting signed URLs or bypassing the app browser.
+5. **Derived work is a separate worker.** The native application source starts the derived worker only when it owns the archive; the read-only service at port 5182 does not. An explicit `--enable-derived` option now exists for a future owned headless deployment, while read-only mode rejects that option. No OCR/ASR job was queued during this audit.
+
+The native RedNote application was opened. Its app-owned browser and archive API are reachable, and the clone job remained paused with reason `user_stopped`. The read-only engine's `/api/engine/system` now reports this native host separately; `captureAvailable=false` still correctly describes the read-only process. The packaged app does not yet expose its derived-worker flag in health, but a deliberately invalid, same-origin derived request returned the worker's validation error (`Choose subtitles or OCR.`) rather than a worker-unavailable response. This confirms the native derived route is attached without queuing a job. No clone resume, new capture, or derived job was started.
+
+## Next engineering steps
+
+The ordered, researched database/capture backlog is now in [DATABASE_TECH_DECISION_2026-10-11.md](DATABASE_TECH_DECISION_2026-10-11.md). Recovery of actual media bytes and stable source manifests are P0; database product experiments are later, measurement-gated work.
+
+- Measure actual checkpoint duration and disk writes during a controlled resumed job. The r5 package includes the compact checkpoint writer, but the clone remained paused during the offline probe.
+- Keep the legacy-only profile, post and 500 comments in the separate projection until source IDs, media paths, and parent relationships are reviewed. Then implement an explicit, reversible import into a new archive revision; never overwrite the original legacy database.
+- Resume a selected, authorized capture segment through the app-owned browser, checkpoint each post, and compare coverage before/after. The paused full-profile job should not be auto-resumed simply because the application opens.
+- Add detailed phase timing (browser navigation, DOM snapshot, comment enumeration, media transfer, archive write, checkpoint, derived view refresh). Decide whether to move queue counters to incremental updates or an event journal from measured costs, keeping atomic recovery.
+- Extend media validation to full-length video and audio checks only if the extra I/O cost is justified; the current decode pass covers every image and the first frame of each video.

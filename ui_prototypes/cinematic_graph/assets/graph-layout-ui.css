@@ -1,0 +1,19 @@
+.graph-layout-control{position:relative}
+.graph-layout-menu{position:absolute;right:0;bottom:calc(100% + 10px);z-index:30;width:min(350px,calc(100vw - 30px));max-height:min(65vh,560px);overflow:auto;padding:16px;background:#151924;border:1px solid #536075;border-radius:12px;box-shadow:0 18px 45px #000b;display:grid;gap:10px}
+.graph-layout-menu[hidden]{display:none}
+.graph-layout-menu h3{margin:0;font-size:17px;color:#fff}
+.graph-layout-menu p{margin:0;color:#b8c3d5;font-size:12px;line-height:1.45}
+.graph-layout-menu input{width:100%;min-width:0}
+.graph-layout-menu>button{background:#26384f;text-align:left}
+.graph-layout-menu>button.primary{background:#e6234b;text-align:center}
+.graph-layout-list{display:grid;gap:6px;max-height:215px;overflow:auto}
+.graph-layout-row{display:flex;align-items:center;gap:5px;padding:7px;border:1px solid #34435a;border-radius:8px;background:#101522}
+.graph-layout-info{flex:1;min-width:0;display:grid;gap:3px;text-align:left}
+.graph-layout-info b{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:12px}
+.graph-layout-info small{font-size:10px;color:#9dabbf}
+.graph-layout-row button{padding:5px 7px;font-size:11px}
+.graph-layout-row .graph-layout-remove{color:#ff91a6;font-size:17px;line-height:1}
+.graph-layout-actions{display:flex;gap:6px}
+.graph-layout-actions button{flex:1;padding:7px;font-size:11px}
+.graph-layout-empty{padding:12px;border:1px dashed #49566b;border-radius:8px}
+.graph-layout-message{min-height:14px;color:#c6e8ff;font-size:11px;line-height:1.4}

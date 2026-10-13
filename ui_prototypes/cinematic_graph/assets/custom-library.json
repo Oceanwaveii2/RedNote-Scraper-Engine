@@ -1,0 +1,75 @@
+{
+  "version": 1,
+  "items": [
+    {
+      "id": "music-tori",
+      "kind": "video",
+      "title": "Tori V · Barbie Girl",
+      "category": "Music video",
+      "boardNodeId": "tori",
+      "media": "/video/1",
+      "preview": "/assets/video-1-36.jpg",
+      "origin": "Custom music reference"
+    },
+    {
+      "id": "music-adela",
+      "kind": "video",
+      "title": "ADÉLA · Nicole Kidman",
+      "category": "Music video",
+      "boardNodeId": "adela",
+      "media": "/video/2",
+      "preview": "/assets/video-2-36.jpg",
+      "origin": "Custom music reference"
+    },
+    {
+      "id": "music-vanity-soul",
+      "kind": "video",
+      "title": "Vanity 6 · Soul Train",
+      "category": "Music video",
+      "boardNodeId": "vanity",
+      "media": "/video/3",
+      "preview": "/assets/video-3-36.jpg",
+      "origin": "Custom music reference"
+    },
+    {
+      "id": "music-vanity-retro",
+      "kind": "video",
+      "title": "Vanity 6 · Nasty Girl",
+      "category": "Music video",
+      "boardNodeId": "vanity-cinema",
+      "media": "/video/4",
+      "preview": "/assets/vanity-nasty-girl.jpg",
+      "origin": "Custom music reference"
+    },
+    {
+      "id": "video-big-lip-reference",
+      "kind": "video",
+      "title": "Big Lip Rainee · offline source video",
+      "category": "Video reference",
+      "boardNodeId": "main",
+      "media": "/assets/big-lip-rainee-offline.mp4",
+      "preview": "/assets/pdf/page-1-23.png",
+      "origin": "Unlinked RedNote reference · local copy"
+    },
+    {
+      "id": "art-rainee-portrait",
+      "kind": "image",
+      "title": "Rainee · protagonist portrait",
+      "category": "Custom art",
+      "boardNodeId": "actor",
+      "media": "/assets/pdf/page-1-3.png",
+      "preview": "/assets/pdf/page-1-3.png",
+      "origin": "Authored Rainee art"
+    },
+    {
+      "id": "art-rainee-shanghai",
+      "kind": "image",
+      "title": "Core Rainee · Shanghai blue node",
+      "category": "Custom art",
+      "boardNodeId": "identity",
+      "media": "/assets/concepts/core-rainee-blue-shanghai-node-vertical.png",
+      "preview": "/assets/concepts/core-rainee-blue-shanghai-node-vertical.png",
+      "origin": "Authored Rainee art"
+    }
+  ]
+}

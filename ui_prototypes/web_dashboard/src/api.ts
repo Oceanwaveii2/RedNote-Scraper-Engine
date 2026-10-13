@@ -1,0 +1,9 @@
+export type Asset={id:string;role:string;slot:string;url:string|null;mime:string|null;verification:string|null;bytes:number|null};
+export type Coverage={status?:string;media?:{status?:string};comments?:{status?:string;reason?:string;expected?:number;captured?:number;attachmentCoverage?:string}};
+export type Post={id:string;source_id:string;profile_id:string;ordinal:number;title:string;body?:string;kind:string;source_url:string;assets:Asset[];coverage:Coverage;inventory?:{sourceDeclared?:boolean;images?:number;videos?:number};derivatives?:{kind:string;language:string;content:string}[]};
+export type Profile={id:string;source_id:string;name:string;bio:string;source_url:string;assets:Asset[];metadata:Record<string,unknown>};
+export type RichSegment={type:'text';text:string}|{type:'asset';sourceIndex:number};
+export type Comment={id:string;source_id:string;author:string;author_id:string|null;author_profile_url:string|null;body:string;rich_segments:RichSegment[];likes:string;replies:number;assets:Asset[];translations:{language:string;content:string}[]};
+export async function api<T=any>(path:string, body?:unknown, signal?:AbortSignal):Promise<T>{const r=await fetch('/api/v2/'+path,{signal,headers:body?{'Content-Type':'application/json','X-RedNote-Action':'explicit'}:{},method:body?'POST':'GET',body:body?JSON.stringify(body):undefined});const d=await r.json();if(!r.ok)throw Error(d.error||`Request failed (${r.status})`);return d;}
+declare global {interface Window{pywebview?:{api:{command:(action:string,payload:unknown)=>Promise<any>}}}}
+export async function command(action:string,payload:unknown={}){if(!window.pywebview)throw Error('Open this Studio in the desktop app to use browser/mining controls.');const d=await window.pywebview.api.command(action,payload);if(d?.error)throw Error(d.error);return d;}

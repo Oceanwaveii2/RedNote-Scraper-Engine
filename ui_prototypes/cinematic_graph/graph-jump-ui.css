@@ -1,0 +1,9 @@
+.graph-jump{position:relative}
+.graph-jump-menu{position:absolute;right:0;top:calc(100% + 8px);z-index:100;width:270px;padding:12px;background:#121723;border:1px solid #495061;border-radius:12px;box-shadow:0 16px 42px #000a}
+.graph-jump-menu[hidden]{display:none}
+.graph-jump-menu input{box-sizing:border-box;width:100%;padding:9px 11px;color:#fff;background:#0b0f19;border:1px solid #4d5a70;border-radius:8px}
+.graph-jump-shortcuts{display:grid;grid-template-columns:1fr 1fr;gap:5px;margin-top:10px}
+.graph-jump-shortcuts button,.graph-jump-results button{padding:8px;text-align:left;color:#dce6f4;background:#202939;border:1px solid #3d4b5f;border-radius:7px;font-size:12px}
+.graph-jump-shortcuts button:hover,.graph-jump-results button:hover{background:#184269;border-color:#3da7e5}
+.graph-jump-results{display:grid;gap:4px;max-height:260px;overflow:auto;margin-top:8px}
+.graph-jump-results span{padding:8px;color:#9daabd;font-size:12px}

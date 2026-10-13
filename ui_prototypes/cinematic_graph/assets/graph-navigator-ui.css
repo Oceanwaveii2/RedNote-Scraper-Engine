@@ -1,0 +1,26 @@
+.graph-navigator{position:absolute;z-index:16;top:14px;right:16px;width:min(335px,calc(100% - 32px));max-height:calc(100% - 82px);overflow:auto;padding:14px;background:#101724ef;border:1px solid #45617a;border-radius:13px;box-shadow:0 15px 40px #0009;touch-action:auto}
+.graph-navigator[hidden]{display:none}
+.graph-navigator-heading{display:flex;align-items:center;justify-content:space-between;color:#e2f4ff}
+.graph-navigator-heading b{font-size:14px}
+.graph-navigator-heading button{padding:0 7px;border:0;background:transparent;font-size:22px}
+.graph-navigator p{margin:7px 0 10px;color:#aebdd0;font-size:11px;line-height:1.45}
+.graph-navigator-routes{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:5px;margin-bottom:10px}
+.graph-navigator-routes button{padding:7px 4px;font-size:11px;color:#d4e7f8;background:#19283b;border-color:#34546f}
+.graph-navigator-routes button:hover{background:#214b69}
+.graph-navigator-routes button[aria-pressed=true]{background:#174d71;border-color:#72c9ff;color:#fff}
+.graph-navigator-sections{display:flex;flex-wrap:wrap;gap:5px;margin:-3px 0 10px}
+.graph-navigator-sections[hidden]{display:none}
+.graph-navigator-sections button{padding:5px 7px;font-size:10px;color:#c5d9e8;background:#162538;border-color:#304f67}
+.graph-navigator-sections button:disabled{opacity:.35;cursor:default}
+#graphNavigatorMap{display:block;width:100%;height:185px;background:#0a111e;border:1px solid #2b4058;border-radius:7px;cursor:crosshair}
+.graph-nav-node{fill:#51677f;stroke:#8fa7be;stroke-width:8px;cursor:pointer}
+.graph-nav-node:hover{fill:#c0d5e8}
+.graph-nav-master{fill:#b5436b;stroke:#ffc4d5}
+.graph-nav-core{fill:#1d83bd;stroke:#78d9ff}
+.graph-nav-lips{fill:#a63582;stroke:#f5a8db}
+.graph-nav-horse{fill:#aa7638;stroke:#f9d88e}
+.graph-nav-viewport{fill:#ffffff13;stroke:#f2f6ff;stroke-width:17px;pointer-events:none}
+.graph-navigator input{box-sizing:border-box;width:100%;margin-top:10px}
+.graph-navigator-results{display:grid;gap:4px;max-height:160px;overflow:auto;margin-top:8px}
+.graph-navigator-results button{padding:7px 9px;text-align:left;font-size:11px;color:#dce6f2;background:#1c2a3a;border-color:#34465c}
+.graph-navigator-results small{color:#a6b5c7;font-size:11px}

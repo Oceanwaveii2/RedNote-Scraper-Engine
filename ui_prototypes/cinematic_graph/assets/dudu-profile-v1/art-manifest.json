@@ -1,0 +1,82 @@
+{
+  "dossier-portrait": {
+    "reference": "dossier",
+    "crop": [
+      115,
+      250,
+      560,
+      826
+    ],
+    "sha256": "1fb01f29de43de0a916c12fb1156e674f46c335c7df8a917de1a26e3c98c5e30"
+  },
+  "dossier-lip-detail": {
+    "reference": "dossier",
+    "crop": [
+      625,
+      633,
+      821,
+      773
+    ],
+    "sha256": "0b5fcd614dde1df4129d24f863bb3d41467d5d0070e1c60eb54df49839a80215"
+  },
+  "dossier-lip-emblem": {
+    "reference": "dossier",
+    "crop": [
+      604,
+      125,
+      731,
+      229
+    ],
+    "sha256": "f0587b45a6a45728f2912da46fbcfd95566dafe0852c16f636b75ff661f2aa46"
+  },
+  "brand": {
+    "reference": "dossier",
+    "crop": [
+      812,
+      129,
+      893,
+      186
+    ],
+    "sha256": "4d06aa94aa82d09b3c7f29afe9503c53456512d4fe1ffe10738bf2c60da8ae0a"
+  },
+  "cabinet-portrait": {
+    "reference": "cabinet",
+    "crop": [
+      76,
+      158,
+      515,
+      690
+    ],
+    "sha256": "a029c6068a289a454960f7eaa0a34d3fead092ae095d5469c2ba383881e71ec2"
+  },
+  "cabinet-mirror": {
+    "reference": "cabinet",
+    "crop": [
+      534,
+      431,
+      821,
+      610
+    ],
+    "sha256": "2bbb6bdb343aabc96a24649323bc01d31c7fc65c47954886058040d429e8d676"
+  },
+  "cabinet-lips": {
+    "reference": "cabinet",
+    "crop": [
+      839,
+      431,
+      1126,
+      610
+    ],
+    "sha256": "3ebc90638c6913f459d6ecd68674695c3056d36e8d706bfa1a42f8e2aded4f33"
+  },
+  "cabinet-source": {
+    "reference": "cabinet",
+    "crop": [
+      1143,
+      431,
+      1435,
+      610
+    ],
+    "sha256": "de83707893761bd1df40154af3f6f98a41731d571986b33c99828b13d87e6786"
+  }
+}

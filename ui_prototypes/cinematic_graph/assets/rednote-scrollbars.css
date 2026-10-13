@@ -1,0 +1,15 @@
+/* The RedNote logo red is the shared scroll accent. */
+:root{color-scheme:dark;--scroll-red:#ff2442;--scroll-track:#101115}
+*{scrollbar-color:var(--scroll-red) var(--scroll-track);scrollbar-width:thin}
+#objectList nav,.profile-post-scroll,.dudu-json{scrollbar-color:var(--scroll-red) var(--scroll-track);scrollbar-width:thin}
+@supports (-webkit-appearance:none){
+  *{scrollbar-color:auto;scrollbar-width:auto}
+  #objectList nav,.profile-post-scroll,.dudu-json{scrollbar-color:auto;scrollbar-width:auto}
+  *::-webkit-scrollbar{width:6px;height:6px}
+  *::-webkit-scrollbar-track{background:var(--scroll-track)}
+  *::-webkit-scrollbar-thumb{background:var(--scroll-red);border:1px solid var(--scroll-track);border-radius:999px}
+  *::-webkit-scrollbar-thumb:hover{background:#ff536a}
+  *::-webkit-scrollbar-corner{background:var(--scroll-track)}
+  body>header::-webkit-scrollbar{height:4px}
+  #boardSidebar::-webkit-scrollbar{width:5px}
+}

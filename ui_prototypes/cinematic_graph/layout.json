@@ -1,0 +1,1768 @@
+{
+  "revision": "restored-previous-board-20261011",
+  "title": "Lip study · source branches",
+  "width": 5955.763697652628,
+  "height": 9640.040636794563,
+  "nodes": [
+    {
+      "id": "actor",
+      "x": 2230.627182593408,
+      "y": -364.8505571859884,
+      "w": 1600,
+      "h": 1400,
+      "kind": "actor",
+      "title": "Profile Rainee",
+      "subtitle": "Base protagonist JSON",
+      "image": "assets/pdf/page-1-3.png",
+      "story": {
+        "status": "authored_ui_template",
+        "observations": [],
+        "commentary": null,
+        "narrative_lens": null,
+        "draft": ""
+      },
+      "actor": {
+        "fictional_actor_ref": "rainee.base",
+        "additional_actors": [],
+        "source_creator_identity": "separate; unassigned"
+      },
+      "override": {
+        "enabled": false,
+        "scope": "immediate_outgoing_connections",
+        "max_hops": 1,
+        "influence": 0.5,
+        "instructions": [],
+        "branch_id": "main_lingzi",
+        "interpretation_status": "authored_ui_only; no propagation engine"
+      },
+      "imageSize": [
+        1474,
+        1921
+      ],
+      "branch": "main_lingzi"
+    },
+    {
+      "id": "identity",
+      "x": 156.59130647378743,
+      "y": 1592.3815296607738,
+      "w": 767.6972956966521,
+      "h": 1364,
+      "kind": "identity",
+      "title": "Core Rainee",
+      "subtitle": "Main timeline · original character",
+      "story": {
+        "status": "authored_ui_template",
+        "observations": [],
+        "commentary": null,
+        "narrative_lens": null,
+        "draft": "",
+        "ui_template": {
+          "kind": "core_route"
+        }
+      },
+      "actor": {
+        "fictional_actor_ref": "rainee.base",
+        "additional_actors": [],
+        "source_creator_identity": "separate; unassigned"
+      },
+      "override": {
+        "enabled": false,
+        "scope": "immediate_outgoing_connections",
+        "max_hops": 1,
+        "influence": 0.5,
+        "instructions": [],
+        "branch_id": "main_lingzi",
+        "interpretation_status": "authored_ui_only; no propagation engine"
+      },
+      "branch": "main_lingzi",
+      "image": "assets/concepts/core-rainee-blue-shanghai-node-vertical.png"
+    },
+    {
+      "id": "alternative",
+      "x": 2844.36608223342,
+      "y": 1626.0812735891268,
+      "w": 799,
+      "h": 1370,
+      "kind": "instruction",
+      "title": "Big Lip Rainee",
+      "subtitle": "An authored transformation",
+      "instruction": "Rainee gets a makeover, massive lips and a new personality.",
+      "image": "assets/pdf/page-1-10.png",
+      "story": {
+        "status": "authored_ui_template",
+        "observations": [],
+        "commentary": null,
+        "narrative_lens": null,
+        "draft": ""
+      },
+      "actor": {
+        "fictional_actor_ref": "rainee.big_lip",
+        "additional_actors": [],
+        "source_creator_identity": "separate; unassigned"
+      },
+      "override": {
+        "enabled": false,
+        "scope": "immediate_outgoing_connections",
+        "max_hops": 1,
+        "influence": 0.5,
+        "instructions": [],
+        "branch_id": "alternative_big_lip",
+        "interpretation_status": "authored_ui_only; no propagation engine"
+      },
+      "imageSize": [
+        1131,
+        1071
+      ],
+      "branch": "alternative_big_lip",
+      "transformationLayoutV2": true,
+      "transformationActorOpen": true
+    },
+    {
+      "id": "form",
+      "x": 3159.4807827237055,
+      "y": 3265.0406367945634,
+      "w": 250,
+      "h": 250,
+      "kind": "identity",
+      "title": "Big Lip Variant",
+      "subtitle": "Alternative form of Rainee",
+      "story": {
+        "status": "authored_ui_template",
+        "observations": [],
+        "commentary": null,
+        "narrative_lens": null,
+        "draft": ""
+      },
+      "actor": {
+        "fictional_actor_ref": "rainee.big_lip",
+        "additional_actors": [],
+        "source_creator_identity": "separate; unassigned"
+      },
+      "override": {
+        "enabled": false,
+        "scope": "immediate_outgoing_connections",
+        "max_hops": 1,
+        "influence": 0.5,
+        "instructions": [],
+        "branch_id": "alternative_big_lip",
+        "interpretation_status": "authored_ui_only; no propagation engine"
+      },
+      "branch": "alternative_big_lip"
+    },
+    {
+      "id": "tori",
+      "x": 1949.4807827237053,
+      "y": 5266.040636794563,
+      "w": 960,
+      "h": 0,
+      "kind": "cinematic",
+      "title": "01 · Tori V — Barbie Girl",
+      "subtitle": "Supplied local video · 3:50 · alternative-chain music / visual reference",
+      "video": 1,
+      "duration": 229.877551,
+      "image": "assets/video-1-36.jpg",
+      "story": {
+        "status": "authored_ui_template",
+        "observations": [],
+        "commentary": null,
+        "narrative_lens": null,
+        "draft": "",
+        "clip": {
+          "video_id": 1,
+          "start_seconds": 0,
+          "end_seconds": 229.877551,
+          "audio_influence": 0.5,
+          "status": "not_analyzed"
+        }
+      },
+      "actor": {
+        "fictional_actor_ref": "rainee.big_lip",
+        "additional_actors": [],
+        "source_creator_identity": "separate; unassigned"
+      },
+      "override": {
+        "enabled": false,
+        "scope": "immediate_outgoing_connections",
+        "max_hops": 1,
+        "influence": 0.5,
+        "instructions": [],
+        "branch_id": "alternative_big_lip",
+        "interpretation_status": "authored_ui_only; no propagation engine"
+      },
+      "imageSize": [
+        640,
+        360
+      ],
+      "branch": "alternative_big_lip",
+      "cinemaJSONOpen": false
+    },
+    {
+      "id": "main",
+      "x": 2949.4807827237055,
+      "y": 5266.040636794563,
+      "w": 760,
+      "h": 0,
+      "kind": "cinematic",
+      "title": "Big Lip Rainee · offline post",
+      "subtitle": "Offline post node · PDF reference; archive binding pending",
+      "image": "assets/pdf/page-1-23.png",
+      "story": {
+        "status": "authored_ui_template",
+        "observations": [],
+        "commentary": null,
+        "narrative_lens": null,
+        "draft": "",
+        "media": {
+          "video_url": "assets/big-lip-rainee-offline.mp4",
+          "role": "video_episode",
+          "source_filename": "完美的嘟嘟唇趣味动画_动漫_动画_完美的嘟嘟唇趣味动画_动漫_动画_完美的嘟嘟唇趣味动画_动漫_动画.mp4",
+          "original_preserved": true
+        }
+      },
+      "actor": {
+        "fictional_actor_ref": "rainee.big_lip",
+        "additional_actors": [],
+        "source_creator_identity": "separate; unassigned"
+      },
+      "override": {
+        "enabled": false,
+        "scope": "immediate_outgoing_connections",
+        "max_hops": 1,
+        "influence": 0.5,
+        "instructions": [],
+        "branch_id": "alternative_big_lip",
+        "interpretation_status": "authored_ui_only; no propagation engine"
+      },
+      "imageSize": [
+        415,
+        636
+      ],
+      "displayFrame": [
+        37,
+        28,
+        360,
+        488
+      ],
+      "branch": "alternative_big_lip",
+      "offline_page_ref": {
+        "kind": "post",
+        "binding_status": "unbound_pdf_reference",
+        "profile_id": null,
+        "post_id": null,
+        "path": null
+      },
+      "cinemaJSONOpen": false
+    },
+    {
+      "id": "main-output",
+      "x": 3150.3813759277496,
+      "y": 6623.2155216071005,
+      "w": 340,
+      "h": 480,
+      "kind": "output",
+      "title": "Alternative story · text draft",
+      "subtitle": "Process chain · local draft",
+      "story": {
+        "status": "authored_ui_template",
+        "observations": [],
+        "commentary": null,
+        "narrative_lens": null,
+        "draft": ""
+      },
+      "actor": {
+        "fictional_actor_ref": "rainee.big_lip",
+        "additional_actors": [],
+        "source_creator_identity": "separate; unassigned"
+      },
+      "override": {
+        "enabled": false,
+        "scope": "immediate_outgoing_connections",
+        "max_hops": 1,
+        "influence": 0.5,
+        "instructions": [],
+        "branch_id": "alternative_big_lip",
+        "interpretation_status": "authored_ui_only; no propagation engine"
+      },
+      "branch": "alternative_big_lip"
+    },
+    {
+      "id": "junction",
+      "x": 3297.4807827237055,
+      "y": 6396.040636794563,
+      "w": 64,
+      "h": 64,
+      "kind": "junction",
+      "title": "Reference junction",
+      "subtitle": "Explicit merge / branch point",
+      "story": {
+        "status": "authored_ui_template",
+        "observations": [],
+        "commentary": null,
+        "narrative_lens": null,
+        "draft": ""
+      },
+      "actor": {
+        "fictional_actor_ref": "rainee.big_lip",
+        "additional_actors": [],
+        "source_creator_identity": "separate; unassigned"
+      },
+      "override": {
+        "enabled": false,
+        "scope": "immediate_outgoing_connections",
+        "max_hops": 1,
+        "influence": 0.5,
+        "instructions": [],
+        "branch_id": "alternative_big_lip",
+        "interpretation_status": "authored_ui_only; no propagation engine"
+      },
+      "branch": "alternative_big_lip"
+    },
+    {
+      "id": "adela",
+      "x": 1949.4807827237053,
+      "y": 7240.040636794563,
+      "w": 960,
+      "h": 0,
+      "kind": "cinematic",
+      "title": "02 · ADÉLA — Nicole Kidman",
+      "subtitle": "Supplied local video · 3:41 · alternative-chain music / visual reference",
+      "video": 2,
+      "duration": 221.355828,
+      "image": "assets/video-2-36.jpg",
+      "story": {
+        "status": "authored_ui_template",
+        "observations": [],
+        "commentary": null,
+        "narrative_lens": null,
+        "draft": "",
+        "clip": {
+          "video_id": 2,
+          "start_seconds": 0,
+          "end_seconds": 221.355828,
+          "audio_influence": 0.5,
+          "status": "not_analyzed"
+        }
+      },
+      "actor": {
+        "fictional_actor_ref": "rainee.big_lip",
+        "additional_actors": [],
+        "source_creator_identity": "separate; unassigned"
+      },
+      "override": {
+        "enabled": false,
+        "scope": "immediate_outgoing_connections",
+        "max_hops": 1,
+        "influence": 0.5,
+        "instructions": [],
+        "branch_id": "alternative_big_lip",
+        "interpretation_status": "authored_ui_only; no propagation engine"
+      },
+      "imageSize": [
+        640,
+        384
+      ],
+      "branch": "alternative_big_lip",
+      "cinemaJSONOpen": false
+    },
+    {
+      "id": "adela-output",
+      "x": 2949.4807827237055,
+      "y": 7240.040636794563,
+      "w": 330,
+      "h": 480,
+      "kind": "output",
+      "title": "ADÉLA Text Output",
+      "subtitle": "Per-video draft",
+      "story": {
+        "status": "authored_ui_template",
+        "observations": [],
+        "commentary": null,
+        "narrative_lens": null,
+        "draft": ""
+      },
+      "actor": {
+        "fictional_actor_ref": "rainee.big_lip",
+        "additional_actors": [],
+        "source_creator_identity": "separate; unassigned"
+      },
+      "override": {
+        "enabled": false,
+        "scope": "immediate_outgoing_connections",
+        "max_hops": 1,
+        "influence": 0.5,
+        "instructions": [],
+        "branch_id": "alternative_big_lip",
+        "interpretation_status": "authored_ui_only; no propagation engine"
+      },
+      "branch": "alternative_big_lip"
+    },
+    {
+      "id": "profile",
+      "x": -83.40869352621257,
+      "y": 3294.3815296607736,
+      "w": 1080,
+      "h": 1030,
+      "kind": "profile",
+      "title": "Lingzi · main story source",
+      "subtitle": "Offline profile node · PDF reference; archive binding pending",
+      "image": "assets/pdf/page-1-21.png",
+      "story": {
+        "status": "authored_ui_template",
+        "observations": [],
+        "commentary": null,
+        "narrative_lens": null,
+        "draft": ""
+      },
+      "actor": {
+        "fictional_actor_ref": "rainee.base",
+        "additional_actors": [],
+        "source_creator_identity": "separate; unassigned"
+      },
+      "override": {
+        "enabled": false,
+        "scope": "immediate_outgoing_connections",
+        "max_hops": 1,
+        "influence": 0.5,
+        "instructions": [],
+        "branch_id": "main_lingzi",
+        "interpretation_status": "authored_ui_only; no propagation engine"
+      },
+      "imageSize": [
+        946,
+        406
+      ],
+      "displayFrame": [
+        86,
+        83,
+        251,
+        251
+      ],
+      "branch": "main_lingzi",
+      "offline_page_ref": {
+        "kind": "profile",
+        "binding_status": "unbound_pdf_reference",
+        "profile_id": null,
+        "post_id": null,
+        "path": null
+      },
+      "expandedHeight": 1030,
+      "memberIds": [
+        "lingzi1",
+        "lingzi2",
+        "lingzi3"
+      ],
+      "postGroup": true
+    },
+    {
+      "id": "lingzi1",
+      "x": -104.66623123464439,
+      "y": 2396.8674744389955,
+      "w": 340,
+      "h": 640,
+      "kind": "image",
+      "title": "Lingzi post 01",
+      "subtitle": "Offline post node · PDF reference; archive binding pending",
+      "original": "assets/pdf/page-1-22.png",
+      "image": "assets/lingzi-post-1-display.png",
+      "story": {
+        "status": "authored_ui_template",
+        "observations": [],
+        "commentary": null,
+        "narrative_lens": null,
+        "draft": ""
+      },
+      "actor": {
+        "fictional_actor_ref": "rainee.base",
+        "additional_actors": [],
+        "source_creator_identity": "separate; unassigned"
+      },
+      "override": {
+        "enabled": false,
+        "scope": "immediate_outgoing_connections",
+        "max_hops": 1,
+        "influence": 0.5,
+        "instructions": [],
+        "branch_id": "main_lingzi",
+        "interpretation_status": "authored_ui_only; no propagation engine"
+      },
+      "imageSize": [
+        350,
+        470
+      ],
+      "branch": "main_lingzi",
+      "offline_page_ref": {
+        "kind": "post",
+        "binding_status": "unbound_pdf_reference",
+        "profile_id": null,
+        "post_id": null,
+        "path": null
+      },
+      "groupedIn": "profile"
+    },
+    {
+      "id": "lingzi-output1",
+      "x": -104.66623123464439,
+      "y": 3116.867474438995,
+      "w": 340,
+      "h": 480,
+      "kind": "output",
+      "title": "Lingzi draft 01",
+      "subtitle": "Individual output · empty draft",
+      "story": {
+        "status": "authored_ui_template",
+        "observations": [],
+        "commentary": null,
+        "narrative_lens": null,
+        "draft": ""
+      },
+      "actor": {
+        "fictional_actor_ref": "rainee.base",
+        "additional_actors": [],
+        "source_creator_identity": "separate; unassigned"
+      },
+      "override": {
+        "enabled": false,
+        "scope": "immediate_outgoing_connections",
+        "max_hops": 1,
+        "influence": 0.5,
+        "instructions": [],
+        "branch_id": "main_lingzi",
+        "interpretation_status": "authored_ui_only; no propagation engine"
+      },
+      "branch": "main_lingzi",
+      "groupedIn": "profile"
+    },
+    {
+      "id": "lingzi2",
+      "x": 265.33376876535567,
+      "y": 2396.8674744389955,
+      "w": 340,
+      "h": 640,
+      "kind": "image",
+      "title": "Lingzi post 02",
+      "subtitle": "Offline post node · PDF reference; archive binding pending",
+      "original": "assets/pdf/page-1-22.png",
+      "image": "assets/lingzi-post-2-display.png",
+      "story": {
+        "status": "authored_ui_template",
+        "observations": [],
+        "commentary": null,
+        "narrative_lens": null,
+        "draft": ""
+      },
+      "actor": {
+        "fictional_actor_ref": "rainee.base",
+        "additional_actors": [],
+        "source_creator_identity": "separate; unassigned"
+      },
+      "override": {
+        "enabled": false,
+        "scope": "immediate_outgoing_connections",
+        "max_hops": 1,
+        "influence": 0.5,
+        "instructions": [],
+        "branch_id": "main_lingzi",
+        "interpretation_status": "authored_ui_only; no propagation engine"
+      },
+      "imageSize": [
+        351,
+        470
+      ],
+      "branch": "main_lingzi",
+      "offline_page_ref": {
+        "kind": "post",
+        "binding_status": "unbound_pdf_reference",
+        "profile_id": null,
+        "post_id": null,
+        "path": null
+      },
+      "groupedIn": "profile"
+    },
+    {
+      "id": "lingzi-output2",
+      "x": 265.33376876535567,
+      "y": 3116.867474438995,
+      "w": 340,
+      "h": 480,
+      "kind": "output",
+      "title": "Lingzi draft 02",
+      "subtitle": "Individual output · empty draft",
+      "story": {
+        "status": "authored_ui_template",
+        "observations": [],
+        "commentary": null,
+        "narrative_lens": null,
+        "draft": ""
+      },
+      "actor": {
+        "fictional_actor_ref": "rainee.base",
+        "additional_actors": [],
+        "source_creator_identity": "separate; unassigned"
+      },
+      "override": {
+        "enabled": false,
+        "scope": "immediate_outgoing_connections",
+        "max_hops": 1,
+        "influence": 0.5,
+        "instructions": [],
+        "branch_id": "main_lingzi",
+        "interpretation_status": "authored_ui_only; no propagation engine"
+      },
+      "branch": "main_lingzi",
+      "groupedIn": "profile"
+    },
+    {
+      "id": "lingzi3",
+      "x": 635.3337687653557,
+      "y": 2396.8674744389955,
+      "w": 340,
+      "h": 640,
+      "kind": "image",
+      "title": "Lingzi post 03",
+      "subtitle": "Offline post node · PDF reference; archive binding pending",
+      "original": "assets/pdf/page-1-22.png",
+      "image": "assets/lingzi-post-3-display.png",
+      "story": {
+        "status": "authored_ui_template",
+        "observations": [],
+        "commentary": null,
+        "narrative_lens": null,
+        "draft": ""
+      },
+      "actor": {
+        "fictional_actor_ref": "rainee.base",
+        "additional_actors": [],
+        "source_creator_identity": "separate; unassigned"
+      },
+      "override": {
+        "enabled": false,
+        "scope": "immediate_outgoing_connections",
+        "max_hops": 1,
+        "influence": 0.5,
+        "instructions": [],
+        "branch_id": "main_lingzi",
+        "interpretation_status": "authored_ui_only; no propagation engine"
+      },
+      "imageSize": [
+        351,
+        470
+      ],
+      "branch": "main_lingzi",
+      "offline_page_ref": {
+        "kind": "post",
+        "binding_status": "unbound_pdf_reference",
+        "profile_id": null,
+        "post_id": null,
+        "path": null
+      },
+      "groupedIn": "profile"
+    },
+    {
+      "id": "lingzi-output3",
+      "x": 635.3337687653557,
+      "y": 3116.867474438995,
+      "w": 340,
+      "h": 480,
+      "kind": "output",
+      "title": "Lingzi draft 03",
+      "subtitle": "Individual output · empty draft",
+      "story": {
+        "status": "authored_ui_template",
+        "observations": [],
+        "commentary": null,
+        "narrative_lens": null,
+        "draft": ""
+      },
+      "actor": {
+        "fictional_actor_ref": "rainee.base",
+        "additional_actors": [],
+        "source_creator_identity": "separate; unassigned"
+      },
+      "override": {
+        "enabled": false,
+        "scope": "immediate_outgoing_connections",
+        "max_hops": 1,
+        "influence": 0.5,
+        "instructions": [],
+        "branch_id": "main_lingzi",
+        "interpretation_status": "authored_ui_only; no propagation engine"
+      },
+      "branch": "main_lingzi",
+      "groupedIn": "profile"
+    },
+    {
+      "id": "photo-profile",
+      "x": 3759.4807827237055,
+      "y": 5266.040636794563,
+      "w": 890,
+      "h": 1030,
+      "kind": "profile",
+      "title": "Lip photo · source profile",
+      "subtitle": "Offline profile node · PDF reference; archive binding pending",
+      "image": "assets/pdf/page-1-7.png",
+      "story": {
+        "status": "authored_ui_template",
+        "observations": [],
+        "commentary": null,
+        "narrative_lens": null,
+        "draft": ""
+      },
+      "actor": {
+        "fictional_actor_ref": "rainee.big_lip",
+        "additional_actors": [],
+        "source_creator_identity": "separate; unassigned"
+      },
+      "override": {
+        "enabled": false,
+        "scope": "immediate_outgoing_connections",
+        "max_hops": 1,
+        "influence": 0.5,
+        "instructions": [],
+        "branch_id": "alternative_big_lip",
+        "interpretation_status": "authored_ui_only; no propagation engine"
+      },
+      "imageSize": [
+        942,
+        474
+      ],
+      "displayFrame": [
+        43,
+        50,
+        261,
+        263
+      ],
+      "branch": "alternative_big_lip",
+      "offline_page_ref": {
+        "kind": "profile",
+        "binding_status": "unbound_pdf_reference",
+        "profile_id": null,
+        "post_id": null,
+        "path": null
+      },
+      "expandedHeight": 1030,
+      "memberIds": [
+        "lip1"
+      ],
+      "postGroup": true
+    },
+    {
+      "id": "lip1",
+      "x": 2079.627621437162,
+      "y": 3086.9629753714553,
+      "w": 410,
+      "h": 660,
+      "kind": "image",
+      "title": "Lip object 01 · photo",
+      "subtitle": "Offline post node · PDF reference; archive binding pending",
+      "image": "assets/pdf/page-1-11.png",
+      "story": {
+        "status": "authored_ui_template",
+        "observations": [],
+        "commentary": null,
+        "narrative_lens": null,
+        "draft": ""
+      },
+      "actor": {
+        "fictional_actor_ref": "rainee.big_lip",
+        "additional_actors": [],
+        "source_creator_identity": "separate; unassigned"
+      },
+      "override": {
+        "enabled": false,
+        "scope": "immediate_outgoing_connections",
+        "max_hops": 1,
+        "influence": 0.5,
+        "instructions": [],
+        "branch_id": "alternative_big_lip",
+        "interpretation_status": "authored_ui_only; no propagation engine"
+      },
+      "imageSize": [
+        1230,
+        1071
+      ],
+      "displayFrame": [
+        4,
+        25,
+        585,
+        1040
+      ],
+      "branch": "alternative_big_lip",
+      "offline_page_ref": {
+        "kind": "post",
+        "binding_status": "unbound_pdf_reference",
+        "profile_id": null,
+        "post_id": null,
+        "path": null
+      },
+      "groupedIn": "photo-profile"
+    },
+    {
+      "id": "photo-output",
+      "x": 2579.6276214371624,
+      "y": 3286.9629753714553,
+      "w": 330,
+      "h": 480,
+      "kind": "output",
+      "title": "Photo Text Output",
+      "subtitle": "Individual output · empty draft",
+      "story": {
+        "status": "authored_ui_template",
+        "observations": [],
+        "commentary": null,
+        "narrative_lens": null,
+        "draft": ""
+      },
+      "actor": {
+        "fictional_actor_ref": "rainee.big_lip",
+        "additional_actors": [],
+        "source_creator_identity": "separate; unassigned"
+      },
+      "override": {
+        "enabled": false,
+        "scope": "immediate_outgoing_connections",
+        "max_hops": 1,
+        "influence": 0.5,
+        "instructions": [],
+        "branch_id": "alternative_big_lip",
+        "interpretation_status": "authored_ui_only; no propagation engine"
+      },
+      "branch": "alternative_big_lip",
+      "groupedIn": "photo-profile"
+    },
+    {
+      "id": "animation-profile",
+      "x": 3306.2349331143305,
+      "y": 7284.484911696907,
+      "w": 1410,
+      "h": 1030,
+      "kind": "profile",
+      "title": "Lip animation · source profile",
+      "subtitle": "Offline profile node · PDF reference; archive binding pending",
+      "image": "assets/pdf/page-1-5.png",
+      "story": {
+        "status": "authored_ui_template",
+        "observations": [],
+        "commentary": null,
+        "narrative_lens": null,
+        "draft": ""
+      },
+      "actor": {
+        "fictional_actor_ref": "rainee.big_lip",
+        "additional_actors": [],
+        "source_creator_identity": "separate; unassigned"
+      },
+      "override": {
+        "enabled": false,
+        "scope": "immediate_outgoing_connections",
+        "max_hops": 1,
+        "influence": 0.5,
+        "instructions": [],
+        "branch_id": "alternative_big_lip",
+        "interpretation_status": "authored_ui_only; no propagation engine"
+      },
+      "imageSize": [
+        1117,
+        481
+      ],
+      "displayFrame": [
+        65,
+        102,
+        222,
+        223
+      ],
+      "branch": "alternative_big_lip",
+      "offline_page_ref": {
+        "kind": "profile",
+        "binding_status": "unbound_pdf_reference",
+        "profile_id": null,
+        "post_id": null,
+        "path": null
+      },
+      "expandedHeight": 1030,
+      "memberIds": [
+        "lip2",
+        "lip3"
+      ],
+      "postGroup": true
+    },
+    {
+      "id": "lip2",
+      "x": 3209.6276214371624,
+      "y": 2866.9629753714553,
+      "w": 370,
+      "h": 650,
+      "kind": "image",
+      "title": "Lip object 02 · animation",
+      "subtitle": "Offline post node · PDF reference; archive binding pending",
+      "image": "assets/pdf/page-1-8.png",
+      "story": {
+        "status": "authored_ui_template",
+        "observations": [],
+        "commentary": null,
+        "narrative_lens": null,
+        "draft": ""
+      },
+      "actor": {
+        "fictional_actor_ref": "rainee.big_lip",
+        "additional_actors": [],
+        "source_creator_identity": "separate; unassigned"
+      },
+      "override": {
+        "enabled": false,
+        "scope": "immediate_outgoing_connections",
+        "max_hops": 1,
+        "influence": 0.5,
+        "instructions": [],
+        "branch_id": "alternative_big_lip",
+        "interpretation_status": "authored_ui_only; no propagation engine"
+      },
+      "imageSize": [
+        1413,
+        1611
+      ],
+      "branch": "alternative_big_lip",
+      "offline_page_ref": {
+        "kind": "post",
+        "binding_status": "unbound_pdf_reference",
+        "profile_id": null,
+        "post_id": null,
+        "path": null
+      },
+      "groupedIn": "animation-profile"
+    },
+    {
+      "id": "lip3",
+      "x": 3649.6276214371624,
+      "y": 2866.9629753714553,
+      "w": 370,
+      "h": 650,
+      "kind": "image",
+      "title": "Lip object 03 · animation",
+      "subtitle": "Offline post node · PDF reference; archive binding pending",
+      "image": "assets/pdf/page-1-9.png",
+      "story": {
+        "status": "authored_ui_template",
+        "observations": [],
+        "commentary": null,
+        "narrative_lens": null,
+        "draft": ""
+      },
+      "actor": {
+        "fictional_actor_ref": "rainee.big_lip",
+        "additional_actors": [],
+        "source_creator_identity": "separate; unassigned"
+      },
+      "override": {
+        "enabled": false,
+        "scope": "immediate_outgoing_connections",
+        "max_hops": 1,
+        "influence": 0.5,
+        "instructions": [],
+        "branch_id": "alternative_big_lip",
+        "interpretation_status": "authored_ui_only; no propagation engine"
+      },
+      "imageSize": [
+        2035,
+        1792
+      ],
+      "displayFrame": [
+        0,
+        5,
+        1380,
+        1710
+      ],
+      "branch": "alternative_big_lip",
+      "offline_page_ref": {
+        "kind": "post",
+        "binding_status": "unbound_pdf_reference",
+        "profile_id": null,
+        "post_id": null,
+        "path": null
+      },
+      "groupedIn": "animation-profile"
+    },
+    {
+      "id": "vanity",
+      "x": 1949.4807827237053,
+      "y": 8980.040636794563,
+      "w": 960,
+      "h": 0,
+      "kind": "cinematic",
+      "title": "03 · Vanity 6 — Soul Train",
+      "subtitle": "After lip object 03 · junction branch · alternative-chain music / visual reference",
+      "video": 3,
+      "duration": 482.951837,
+      "image": "assets/video-3-36.jpg",
+      "story": {
+        "status": "authored_ui_template",
+        "observations": [],
+        "commentary": null,
+        "narrative_lens": null,
+        "draft": "",
+        "clip": {
+          "video_id": 3,
+          "start_seconds": 0,
+          "end_seconds": 482.951837,
+          "audio_influence": 0.5,
+          "status": "not_analyzed"
+        }
+      },
+      "actor": {
+        "fictional_actor_ref": "rainee.big_lip",
+        "additional_actors": [],
+        "source_creator_identity": "separate; unassigned"
+      },
+      "override": {
+        "enabled": false,
+        "scope": "immediate_outgoing_connections",
+        "max_hops": 1,
+        "influence": 0.5,
+        "instructions": [],
+        "branch_id": "alternative_big_lip",
+        "interpretation_status": "authored_ui_only; no propagation engine"
+      },
+      "imageSize": [
+        640,
+        470
+      ],
+      "branch": "alternative_big_lip",
+      "cinemaJSONOpen": false
+    },
+    {
+      "id": "lip-output2",
+      "x": 3209.6276214371624,
+      "y": 3636.9629753714553,
+      "w": 370,
+      "h": 480,
+      "kind": "output",
+      "title": "Animation draft 02",
+      "subtitle": "Individual output · empty draft",
+      "story": {
+        "status": "authored_ui_template",
+        "observations": [],
+        "commentary": null,
+        "narrative_lens": null,
+        "draft": ""
+      },
+      "actor": {
+        "fictional_actor_ref": "rainee.big_lip",
+        "additional_actors": [],
+        "source_creator_identity": "separate; unassigned"
+      },
+      "override": {
+        "enabled": false,
+        "scope": "immediate_outgoing_connections",
+        "max_hops": 1,
+        "influence": 0.5,
+        "instructions": [],
+        "branch_id": "alternative_big_lip",
+        "interpretation_status": "authored_ui_only; no propagation engine"
+      },
+      "branch": "alternative_big_lip",
+      "groupedIn": "animation-profile"
+    },
+    {
+      "id": "lip-output3",
+      "x": 3649.6276214371624,
+      "y": 3636.9629753714553,
+      "w": 370,
+      "h": 480,
+      "kind": "output",
+      "title": "Animation draft 03",
+      "subtitle": "Individual output · empty draft",
+      "story": {
+        "status": "authored_ui_template",
+        "observations": [],
+        "commentary": null,
+        "narrative_lens": null,
+        "draft": ""
+      },
+      "actor": {
+        "fictional_actor_ref": "rainee.big_lip",
+        "additional_actors": [],
+        "source_creator_identity": "separate; unassigned"
+      },
+      "override": {
+        "enabled": false,
+        "scope": "immediate_outgoing_connections",
+        "max_hops": 1,
+        "influence": 0.5,
+        "instructions": [],
+        "branch_id": "alternative_big_lip",
+        "interpretation_status": "authored_ui_only; no propagation engine"
+      },
+      "branch": "alternative_big_lip",
+      "groupedIn": "animation-profile"
+    },
+    {
+      "id": "vanity-output",
+      "x": 2949.4807827237055,
+      "y": 8980.040636794563,
+      "w": 430,
+      "h": 480,
+      "kind": "output",
+      "title": "Vanity 6 Text Output",
+      "subtitle": "Per-video draft",
+      "story": {
+        "status": "authored_ui_template",
+        "observations": [],
+        "commentary": null,
+        "narrative_lens": null,
+        "draft": ""
+      },
+      "actor": {
+        "fictional_actor_ref": "rainee.big_lip",
+        "additional_actors": [],
+        "source_creator_identity": "separate; unassigned"
+      },
+      "override": {
+        "enabled": false,
+        "scope": "immediate_outgoing_connections",
+        "max_hops": 1,
+        "influence": 0.5,
+        "instructions": [],
+        "branch_id": "alternative_big_lip",
+        "interpretation_status": "authored_ui_only; no propagation engine"
+      },
+      "branch": "alternative_big_lip"
+    },
+    {
+      "id": "lip-music-junction",
+      "x": 4460,
+      "y": 9187,
+      "w": 64,
+      "h": 64,
+      "kind": "junction",
+      "title": "Music",
+      "subtitle": "User-added Vanity 6 junction near the lip nodes",
+      "branch": "alternative_big_lip",
+      "story": {
+        "status": "authored_ui_template",
+        "observations": [],
+        "draft": ""
+      },
+      "actor": {
+        "fictional_actor_ref": "rainee.big_lip",
+        "additional_actors": [],
+        "source_creator_identity": "not an actor"
+      },
+      "override": {
+        "enabled": false,
+        "scope": "immediate_outgoing_connections",
+        "max_hops": 1,
+        "influence": 0.5,
+        "branch_id": "alternative_big_lip",
+        "instructions": []
+      }
+    },
+    {
+      "id": "tori-audio-fx",
+      "x": 1949.4807827237053,
+      "y": 6259.040636794563,
+      "w": 480,
+      "h": 550,
+      "kind": "audio_fx",
+      "title": "01 · Rhythm / cadence",
+      "subtitle": "Audio preview + authored steering · alternative branch only",
+      "branch": "alternative_big_lip",
+      "video": 1,
+      "duration": 229.877551,
+      "image": "assets/video-1-36.jpg",
+      "audioSource": "tori",
+      "visualMode": "bars",
+      "story": {
+        "status": "authored_ui_template",
+        "observations": [],
+        "draft": "",
+        "lanes": {
+          "dsp": "live preview signal only; no persistent feature extraction",
+          "embedding": "not connected",
+          "semantic_cue": "author input only"
+        },
+        "literary_controls": {
+          "cadence": 0.5,
+          "tension": 0.5,
+          "dialogue_snap": 0.5
+        }
+      },
+      "actor": {
+        "fictional_actor_ref": "rainee.big_lip",
+        "additional_actors": [],
+        "source_creator_identity": "music source is separate from fictional actor"
+      },
+      "override": {
+        "enabled": false,
+        "scope": "immediate_outgoing_connections",
+        "max_hops": 1,
+        "influence": 0.5,
+        "branch_id": "alternative_big_lip",
+        "instructions": []
+      }
+    },
+    {
+      "story": {
+        "status": "authored_ui_template",
+        "draft": ""
+      },
+      "actor": {
+        "fictional_actor_ref": "rainee.horse",
+        "additional_actors": []
+      },
+      "override": {
+        "enabled": false,
+        "scope": "immediate_outgoing_connections",
+        "max_hops": 1,
+        "influence": 0.5,
+        "instructions": []
+      },
+      "branch": "alternative_horse",
+      "id": "horse-transform",
+      "kind": "instruction",
+      "title": "Black Horse Transformation",
+      "subtitle": "Before / After + actor overrides",
+      "instruction": "Core Rainee becomes Horse Rainee in a parallel branch. Compare evidence, then author this form.",
+      "image": "assets/black-horse-after-art-v2.png",
+      "x": 4935.763697652628,
+      "y": 1646.3005645982512,
+      "w": 840,
+      "h": 1418,
+      "transformationLayoutV2": true,
+      "transformationActorOpen": true
+    },
+    {
+      "story": {
+        "status": "authored_ui_template",
+        "draft": ""
+      },
+      "actor": {
+        "fictional_actor_ref": "rainee.horse",
+        "additional_actors": []
+      },
+      "override": {
+        "enabled": false,
+        "scope": "immediate_outgoing_connections",
+        "max_hops": 1,
+        "influence": 0.5,
+        "instructions": []
+      },
+      "branch": "alternative_horse",
+      "id": "horse-form",
+      "kind": "identity",
+      "title": "Horse Rainee",
+      "subtitle": "Parallel form derived from Core Rainee",
+      "x": 5155.763697652628,
+      "y": 3258.300564598251,
+      "w": 400,
+      "h": 360
+    },
+    {
+      "story": {
+        "status": "authored_ui_template",
+        "draft": "",
+        "envelope_theme": {
+          "title": "Rainee Year of the Horse",
+          "font": "Times New Roman",
+          "sparkles": true,
+          "jsonOpen": true
+        },
+        "ui_template": {
+          "kind": "envelope"
+        },
+        "protagonist_profile": {
+          "role": "derived_protagonist",
+          "identity_node_ref": "horse-form",
+          "source_identity_node": "identity",
+          "original_preserved": true
+        }
+      },
+      "actor": {
+        "fictional_actor_ref": "rainee.horse",
+        "additional_actors": [],
+        "profile_role": "protagonist",
+        "derived_from": "rainee.base"
+      },
+      "override": {
+        "enabled": false,
+        "scope": "immediate_outgoing_connections",
+        "max_hops": 1,
+        "influence": 0.5,
+        "instructions": []
+      },
+      "branch": "alternative_horse",
+      "id": "horse-source",
+      "kind": "actor",
+      "title": "Rainee Year of the Horse · Protagonist profile",
+      "subtitle": "Offline post reference · archive binding pending",
+      "image": "assets/horse-rednote-source.png",
+      "x": 5055.763697652628,
+      "y": 3798.300564598251,
+      "w": 0,
+      "h": 850
+    },
+    {
+      "story": {
+        "node_id": "vanity-cinema",
+        "media_type": "video",
+        "role": "expression_reference",
+        "target": "lip-music-junction",
+        "source": "original",
+        "title": "Vanity 6 — Nasty Girl (1982) · TopPop"
+      },
+      "actor": {
+        "fictional_actor_ref": "rainee.big_lip",
+        "additional_actors": []
+      },
+      "override": {
+        "enabled": false,
+        "scope": "immediate_outgoing_connections",
+        "max_hops": 1,
+        "influence": 0.5,
+        "instructions": []
+      },
+      "branch": "alternative_big_lip",
+      "id": "vanity-cinema",
+      "kind": "cinematic",
+      "title": "Retro performance · 1980s",
+      "subtitle": "Vanity 6 · Nasty Girl (1982) · TopPop",
+      "image": "assets/vanity-nasty-girl.jpg",
+      "video": 4,
+      "duration": 221.75,
+      "x": 3449.4807827237055,
+      "y": 8980.040636794563,
+      "w": 960,
+      "h": 0,
+      "cinemaJSONOpen": false
+    },
+    {
+      "id": "profile-stories-profile",
+      "uiCreated": true,
+      "kind": "output",
+      "x": -83.40869352621257,
+      "y": 4444.381529660774,
+      "w": 1080,
+      "h": 370,
+      "title": "Lingzi · main story source · Stories",
+      "outputProfile": "profile",
+      "story": {
+        "status": "local_authored_drafts",
+        "draft": "",
+        "stories": [],
+        "post_refs": [
+          "lingzi1",
+          "lingzi2",
+          "lingzi3"
+        ],
+        "source_profile_ref": "profile",
+        "overrides_owner_ref": "profile"
+      },
+      "actor": {
+        "fictional_actor_ref": "rainee.base",
+        "additional_actors": [],
+        "source_creator_identity": "separate; unassigned"
+      },
+      "override": {
+        "enabled": false,
+        "influence": 0.5
+      }
+    },
+    {
+      "id": "profile-stories-photo-profile",
+      "uiCreated": true,
+      "kind": "output",
+      "x": 3759.4807827237055,
+      "y": 6416.040636794563,
+      "w": 890,
+      "h": 370,
+      "title": "Lip photo · source profile · Stories",
+      "outputProfile": "photo-profile",
+      "story": {
+        "status": "local_authored_drafts",
+        "draft": "",
+        "stories": [],
+        "post_refs": [
+          "lip1"
+        ],
+        "source_profile_ref": "photo-profile",
+        "overrides_owner_ref": "photo-profile"
+      },
+      "actor": {
+        "fictional_actor_ref": "rainee.big_lip",
+        "additional_actors": [],
+        "source_creator_identity": "separate; unassigned"
+      },
+      "override": {
+        "enabled": false,
+        "influence": 0.5
+      }
+    },
+    {
+      "id": "profile-stories-animation-profile",
+      "uiCreated": true,
+      "kind": "output",
+      "x": 3306.2349331143305,
+      "y": 8434.484911696907,
+      "w": 1410,
+      "h": 370,
+      "title": "Lip animation · source profile · Stories",
+      "outputProfile": "animation-profile",
+      "story": {
+        "status": "local_authored_drafts",
+        "draft": "",
+        "stories": [],
+        "post_refs": [
+          "lip2",
+          "lip3"
+        ],
+        "source_profile_ref": "animation-profile",
+        "overrides_owner_ref": "animation-profile"
+      },
+      "actor": {
+        "fictional_actor_ref": "rainee.big_lip",
+        "additional_actors": [],
+        "source_creator_identity": "separate; unassigned"
+      },
+      "override": {
+        "enabled": false,
+        "influence": 0.5
+      }
+    },
+    {
+      "id": "assistant-gemini",
+      "uiCreated": true,
+      "kind": "output",
+      "x": 360,
+      "y": 5092,
+      "w": 720,
+      "h": 680,
+      "title": "Gemini · Google assistant",
+      "story": {
+        "assistant_provider": "gemini",
+        "messages": []
+      },
+      "actor": {},
+      "override": {}
+    },
+    {
+      "id": "assistant-codex",
+      "uiCreated": true,
+      "kind": "output",
+      "x": 360,
+      "y": 5952,
+      "w": 720,
+      "h": 680,
+      "title": "Codex · GPT assistant",
+      "story": {
+        "assistant_provider": "codex",
+        "messages": []
+      },
+      "actor": {},
+      "override": {}
+    },
+    {
+      "id": "dudu-dossier-1791591320317",
+      "uiCreated": true,
+      "kind": "actor",
+      "x": 1912.7252091832022,
+      "y": 3435.4811909303257,
+      "w": 0,
+      "h": 0,
+      "title": "嘟嘟唇 · Rainee · Profile dossier",
+      "story": {
+        "ui_template": {
+          "kind": "dudu-dossier"
+        },
+        "protagonist_profile": {
+          "role": "derived_protagonist",
+          "source_identity_node": "identity",
+          "original_preserved": true
+        }
+      },
+      "actor": {
+        "fictional_actor_ref": "rainee.dudu_lips",
+        "derived_from": "rainee.base",
+        "name": "嘟嘟唇 · Rainee",
+        "alias": "Dudu Lips · Rainee",
+        "profile_role": "Derived protagonist",
+        "additional_actors": [],
+        "tags": [
+          "Glamorous",
+          "Playful",
+          "Bold"
+        ],
+        "origin_label": "Rainee 01 (base)",
+        "style": "Glamorous · Playful · Bold",
+        "visual_tag": "Signature big pouty lips",
+        "language": "中文 / English",
+        "focus": "Beauty · Attitude · Daily life"
+      },
+      "override": {
+        "enabled": false,
+        "instructions": []
+      }
+    },
+    {
+      "id": "dudu-cabinet-1791591320493",
+      "uiCreated": true,
+      "kind": "actor",
+      "x": 2873.4554318058704,
+      "y": 3817.6671171850444,
+      "w": 0,
+      "h": 0,
+      "title": "嘟嘟唇 · Rainee · Profile cabinet",
+      "story": {
+        "ui_template": {
+          "kind": "dudu-cabinet"
+        },
+        "protagonist_profile": {
+          "role": "derived_protagonist",
+          "source_identity_node": "identity",
+          "original_preserved": true
+        },
+        "dudu_ui": {
+          "actor": false
+        }
+      },
+      "actor": {
+        "fictional_actor_ref": "rainee.dudu_lips",
+        "derived_from": "rainee.base",
+        "name": "嘟嘟唇 · Rainee",
+        "alias": "Dudu Lips · Rainee",
+        "profile_role": "Derived protagonist",
+        "additional_actors": [],
+        "tags": [
+          "Glamorous",
+          "Playful",
+          "Bold"
+        ]
+      },
+      "override": {
+        "enabled": false,
+        "instructions": []
+      }
+    },
+    {
+      "id": "horse-output",
+      "uiCreated": true,
+      "kind": "output",
+      "subtitle": "Horse branch · editable draft",
+      "x": 5035.763697652628,
+      "y": 5564.300564598251,
+      "w": 640,
+      "h": 480,
+      "title": "Horse · text output",
+      "story": {
+        "status": "authored_ui_template",
+        "draft": ""
+      },
+      "actor": {
+        "fictional_actor_ref": "rainee.horse",
+        "additional_actors": []
+      },
+      "override": {
+        "enabled": false
+      }
+    }
+  ],
+  "edges": [
+    [
+      "actor",
+      "identity",
+      "base profile"
+    ],
+    [
+      "identity",
+      "alternative",
+      "alternative path"
+    ],
+    [
+      "alternative",
+      "form",
+      "form override"
+    ],
+    [
+      "form",
+      "tori",
+      "video context"
+    ],
+    [
+      "identity",
+      "profile",
+      "source group"
+    ],
+    [
+      "tori",
+      "main",
+      "music / visual influence"
+    ],
+    [
+      "main",
+      "main-output",
+      "process chain"
+    ],
+    [
+      "main-output",
+      "junction",
+      "story junction"
+    ],
+    [
+      "junction",
+      "adela",
+      "alternative reference branch"
+    ],
+    [
+      "adela",
+      "adela-output",
+      "video draft"
+    ],
+    [
+      "main",
+      "photo-profile",
+      "photo reference branch"
+    ],
+    [
+      "junction",
+      "animation-profile",
+      "animation reference branch"
+    ],
+    [
+      "profile",
+      "lingzi1",
+      "post 01"
+    ],
+    [
+      "profile",
+      "lingzi2",
+      "post 02"
+    ],
+    [
+      "profile",
+      "lingzi3",
+      "post 03"
+    ],
+    [
+      "photo-profile",
+      "lip1",
+      "source post"
+    ],
+    [
+      "lip1",
+      "photo-output",
+      "post draft"
+    ],
+    [
+      "animation-profile",
+      "lip2",
+      "source post"
+    ],
+    [
+      "animation-profile",
+      "lip3",
+      "source post"
+    ],
+    [
+      "lip3",
+      "vanity",
+      "after object 03"
+    ],
+    [
+      "vanity",
+      "vanity-output",
+      "video draft"
+    ],
+    [
+      "lip2",
+      "lip-output2",
+      "post draft"
+    ],
+    [
+      "lip3",
+      "lip-output3",
+      "post draft"
+    ],
+    [
+      "lingzi1",
+      "lingzi-output1",
+      "post draft"
+    ],
+    [
+      "lingzi2",
+      "lingzi-output2",
+      "post draft"
+    ],
+    [
+      "lingzi3",
+      "lingzi-output3",
+      "post draft"
+    ],
+    [
+      "vanity",
+      "lip-music-junction",
+      "music / expression reference"
+    ],
+    [
+      "lip-music-junction",
+      "junction",
+      "alternative-chain contribution"
+    ],
+    [
+      "tori",
+      "tori-audio-fx",
+      "audio preview / authored steering"
+    ],
+    [
+      "form",
+      "horse-transform",
+      "next alternative path"
+    ],
+    [
+      "horse-transform",
+      "horse-form",
+      "derived identity"
+    ],
+    [
+      "horse-form",
+      "horse-source",
+      "reference evidence"
+    ],
+    [
+      "vanity-cinema",
+      "lip-music-junction",
+      "music / expression reference"
+    ]
+  ],
+  "groups": [
+    {
+      "id": "core-route-group",
+      "title": "CORE · main timeline / Lingzu profile / selected posts",
+      "x": -153.40869352621257,
+      "y": 1482.3815296607738,
+      "w": 1220,
+      "h": 3412
+    },
+    {
+      "id": "big-lips-route-group",
+      "title": "BIG LIPS · derived character / video and profile references",
+      "x": 1879.4807827237053,
+      "y": 1543.0406367945634,
+      "w": 2940,
+      "h": 8550
+    },
+    {
+      "id": "horse-route-group",
+      "title": "HORSE · parallel derived character / themed profile / output",
+      "x": 4865.763697652628,
+      "y": 1536.3005645982512,
+      "w": 980,
+      "h": 4578
+    },
+    {
+      "id": "assistant-group",
+      "title": "ASSISTANTS · separate from story flow",
+      "x": 290,
+      "y": 4982,
+      "w": 860,
+      "h": 1720
+    }
+  ],
+  "source_topology_note": "PDF connections are visual references; arrows and execution semantics require an engine contract. Vanity 6 and its junction are later human additions."
+}

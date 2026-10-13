@@ -1,0 +1,18 @@
+# Red Engine analysis/session change manifest — 2026-10-11
+
+The six existing files below were backed up under D:/0/Noir Fiction Engine/00_ADMIN/Backups/RedEngineAnalysisSessions20261011/Red_Engine before editing. When D: filled, the studies.sqlite backup was temporarily moved to C:. After space was restored, it was returned to D:/0/Noir Fiction Engine/00_ADMIN/Backups/RedEngineAnalysisSessions20261011/studies.sqlite. Its SHA-256 remained 3A8B5519F6E53C1B976192615EAF3EA0BB0F177512CBF4859D372A9F9E8A1E63 through both moves. The captured mirror, imported JSON and media were not changed.
+
+| File under Red_Engine | Before SHA-256 | After SHA-256 |
+| --- | --- | --- |
+| study_core.py | 30D57D1F9BC6DA4D6948F0D87392487C39619F7B054446789FC07926502E975F | DBEE578190C7ABAAA5F3CA1B196C4F92062D2E61F5720117AFC007B5B2654CC0 |
+| study_storage.py | 4D51822869B6477A345874C6FCE1989350FA41724AF1153851161F6F4C4C20BD | A3A007D1539B0E6AABABB818CF18F104C3EB21555D68CC8F7ABCB6C5843B4924 |
+| research_service.py | 76D50BBB7503084A72B99BA2BD4ED8FFD063D8B99076484EE8DC214F9F603644 | 7FE2CDB9537C616BEE822DBC3D644BAB9FF962B518DC867C05314054FB5AA86A |
+| study_cli.py | 513FD0BB83439AD5B1881B49EC63AFB1B7A925E219D92780D23AD61D48449A7D | D7831C3723FA172BACD6DB984A0226D492D6CF056210A5F13A908A654965A1CC |
+| provider_codex.py | 0AF6413DDCE24A756C92561BE19E69FEA542411F4847CC313A407A5C7EB12B8E | FAEB925DFDD9C77BB51CCDFA4944E27CC709FD6AD9D66990C932C279FAC0B01B |
+| README.md | 0A0758A9DF923B4DB44886DBD6642A64B8FDDCDE487FBC3C2D16BC37D477E050 | FBAC6993EF00961B41514859E140C4D8CAF69D3F20B347A00794B9B9B9FF0392 |
+
+New files: provider_runtime.py (94F2117270ED1BDE46DFF48402FBA409AAEA01B5D4B19234F2FB224523E5E73E), provider_gemini.py (D3518ADA1F8E86AA85C30E24D999251F58730FF22D5E2BA4949C3DF860322442), gemini-project.json (B737A6D32D11998CAD8646526A9900C58FC450617EE70E150B74D10422DCCFFB), and ANALYSIS_AND_SESSIONS_2026-10-11.md (C6A7BFD7D645344412B9D4C9FF1BB1C7984A6F0A9FA2CC98A12CE410AE4E8F8D).
+
+After the marketing run, two saved provider outputs, and one proposed finding, the study database hash was EF8835F00DB8690D7CD09C540C2E1F94906424FA7B014403D5D02624A3F0FF87. Later study records will change that file hash; saved per-record hashes remain in the database.
+
+Changed Python modules compiled before D: filled. Real Codex and Gemini outputs passed source ID and exact-quote validation. The finding passed its pin/hash check. job-recover found no stale attempt. Automatic execution policy rejected restarting the owned port-5188 service. CLI commands are live; new HTTP routes need a permitted restart.

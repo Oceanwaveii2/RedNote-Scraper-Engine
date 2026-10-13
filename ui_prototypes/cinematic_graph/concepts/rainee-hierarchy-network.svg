@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1250" viewBox="0 0 1600 1250" role="img" aria-labelledby="title desc">
+  <title id="title">Rainee hierarchy and alternate data paths</title>
+  <desc id="desc">One top character profile feeds Core, Big Lips, and Horse blue route nodes. Each route has an independent downward state path. A nested Lingzu mirror source shows included and excluded posts and per-post overrides. Music and video junctions influence paths without becoming actor branches.</desc>
+  <defs>
+    <pattern id="dots" width="24" height="24" patternUnits="userSpaceOnUse"><circle cx="2" cy="2" r="1" fill="#42516c" opacity=".6"/></pattern>
+    <linearGradient id="card" x2="0" y2="1"><stop stop-color="#121d31"/><stop offset="1" stop-color="#0b111e"/></linearGradient>
+    <linearGradient id="profile" x2="0" y2="1"><stop stop-color="#282030"/><stop offset="1" stop-color="#11131d"/></linearGradient>
+    <style>
+      .canvas{fill:#161925}.grid{fill:url(#dots)}.route{fill:url(#card);stroke:#24a8ff;stroke-width:3}.state{fill:#101725;stroke:#6a849d;stroke-width:2}.profile{fill:url(#profile);stroke:#f44871;stroke-width:2}.folder{fill:#10151f;stroke:#9aa5bc;stroke-width:2}.post{fill:#192233;stroke:#43c98d;stroke-width:2}.negative{fill:#24191f;stroke:#ff405f;stroke-width:3}.junction{fill:#101c2a;stroke:#36c9ed;stroke-width:2}.primary{fill:#f7f8fd;font:bold 27px 'Segoe UI',Arial,sans-serif}.label{fill:#f7f8fd;font:bold 20px 'Segoe UI',Arial,sans-serif}.small{fill:#b5c4df;font:17px 'Segoe UI',Arial,sans-serif}.tiny{fill:#99abc6;font:14px 'Segoe UI',Arial,sans-serif}.blue{fill:#43c4ff;font:bold 14px 'Segoe UI',Arial,sans-serif}.green{fill:#57dbab}.red{fill:#ff6d82}.wire{fill:none;stroke:#41adf2;stroke-width:3}.nested{fill:none;stroke:#a7b9d0;stroke-width:2}.influence{fill:none;stroke:#56d8e3;stroke-width:2.5;stroke-dasharray:8 7}.port{fill:#0c1524;stroke:#38b9ff;stroke-width:3}.pinkPort{fill:#0c1524;stroke:#ff466e;stroke-width:3}.pill{fill:#163954;stroke:#30aeed;stroke-width:1.5}.override{fill:#0d1320;stroke:#65728d;stroke-width:1.5}
+    </style>
+  </defs>
+  <rect class="canvas" width="1600" height="1250"/><rect class="grid" width="1600" height="1250"/>
+  <text x="65" y="49" class="small">Concept sketch · hierarchy and data flow</text>
+  <text x="1535" y="49" class="tiny" text-anchor="end">Blue = route task  •  green = counted  •  red = excluded</text>
+
+  <!-- Identity and first-level route choice. These are parallel, not sequential. -->
+  <path class="wire" d="M800 209 V267 H270 V313 M800 267 H800 V313 M800 267 H1330 V313"/>
+  <rect x="525" y="77" width="550" height="132" rx="19" class="profile"/>
+  <circle cx="587" cy="143" r="40" fill="#563347" stroke="#e36b89" stroke-width="2"/>
+  <circle cx="587" cy="132" r="14" fill="#cfa4af"/><path d="M558 165 Q587 133 616 165" fill="#cfa4af"/>
+  <text x="651" y="122" class="blue">MASTER CHARACTER PROFILE</text><text x="651" y="158" class="primary">Rainee</text>
+  <text x="651" y="183" class="small">Original actor identity · shared source for three routes</text>
+  <circle cx="800" cy="209" r="7" class="pinkPort"/>
+
+  <g><rect x="105" y="313" width="330" height="121" rx="17" class="route"/><rect x="123" y="330" width="112" height="27" rx="12" class="pill"/><text x="179" y="349" text-anchor="middle" class="blue">ROUTE 01</text><text x="135" y="393" class="primary">CORE</text><text x="135" y="418" class="small">baseline state / timeline</text><circle cx="270" cy="313" r="7" class="port"/><circle cx="270" cy="434" r="7" class="port"/></g>
+  <g><rect x="635" y="313" width="330" height="121" rx="17" class="route"/><rect x="653" y="330" width="112" height="27" rx="12" class="pill"/><text x="709" y="349" text-anchor="middle" class="blue">ROUTE 02</text><text x="665" y="393" class="primary">BIG LIPS</text><text x="665" y="418" class="small">radically different state</text><circle cx="800" cy="313" r="7" class="port"/><circle cx="800" cy="434" r="7" class="port"/></g>
+  <g><rect x="1165" y="313" width="330" height="121" rx="17" class="route"/><rect x="1183" y="330" width="112" height="27" rx="12" class="pill"/><text x="1239" y="349" text-anchor="middle" class="blue">ROUTE 03</text><text x="1195" y="393" class="primary">HORSE</text><text x="1195" y="418" class="small">radically different state</text><circle cx="1330" cy="313" r="7" class="port"/><circle cx="1330" cy="434" r="7" class="port"/></g>
+
+  <!-- Second-level independent world/state paths. -->
+  <path class="wire" d="M270 434 V513 M800 434 V513 M1330 434 V513"/>
+  <g><rect x="112" y="513" width="316" height="105" rx="13" class="state"/><text x="138" y="550" class="label">Core Rainee</text><text x="138" y="577" class="small">Regular universe / story state</text><text x="138" y="600" class="tiny">Separate data path and outputs</text><circle cx="270" cy="618" r="6" class="port"/></g>
+  <g><rect x="642" y="513" width="316" height="105" rx="13" class="state"/><text x="668" y="550" class="label">嘟嘟唇 · Rainee</text><text x="668" y="577" class="small">Big Lips universe / state</text><text x="668" y="600" class="tiny">Own profile, references and outputs</text><circle cx="800" cy="618" r="6" class="port"/></g>
+  <g><rect x="1172" y="513" width="316" height="105" rx="13" class="state"/><text x="1198" y="550" class="label">Horse Rainee</text><text x="1198" y="577" class="small">Horse universe / state</text><text x="1198" y="600" class="tiny">Own profile, references and outputs</text><circle cx="1330" cy="618" r="6" class="port"/></g>
+
+  <!-- Rigid mirror data hierarchy. The post state is selection, not deletion. -->
+  <path class="nested" d="M270 618 V679 M270 759 V791"/>
+  <rect x="86" y="679" width="451" height="429" rx="16" class="folder"/>
+  <rect x="105" y="665" width="165" height="31" rx="7" fill="#28334b" stroke="#a4b0c7"/>
+  <text x="120" y="687" class="tiny">MIRROR PROFILE FOLDER</text>
+  <text x="115" y="727" class="label">Lingzu · main profile</text>
+  <text x="115" y="753" class="small">Captured profile + post listing</text>
+  <rect x="107" y="791" width="409" height="48" rx="8" class="state"/>
+  <text x="128" y="822" class="small">Post listing · default: all positive</text>
+  <path class="nested" d="M311 839 V856 H174 V864 M311 856 V864 M311 856 H448 V864"/>
+  <rect x="107" y="864" width="128" height="83" rx="9" class="post"/><text x="122" y="896" class="label">Post A</text><text x="122" y="925" class="tiny green">+ counted</text>
+  <rect x="247" y="864" width="128" height="83" rx="9" class="post"/><text x="262" y="896" class="label">Post B</text><text x="262" y="925" class="tiny green">+ counted</text>
+  <rect x="387" y="864" width="128" height="83" rx="9" class="negative"/><text x="402" y="896" class="label">Post C</text><text x="402" y="925" class="tiny red">− ignored</text>
+  <path class="nested" d="M171 947 V977 M311 947 V977 M451 947 V977"/>
+  <rect x="107" y="977" width="128" height="57" rx="6" class="override"/><rect x="247" y="977" width="128" height="57" rx="6" class="override"/><rect x="387" y="977" width="128" height="57" rx="6" class="override"/>
+  <text x="118" y="999" class="tiny">Post JSON</text><text x="118" y="1018" class="tiny">overrides</text><text x="258" y="999" class="tiny">Post JSON</text><text x="258" y="1018" class="tiny">overrides</text><text x="398" y="999" class="tiny">Post JSON</text><text x="398" y="1018" class="tiny">overrides</text>
+  <text x="115" y="1074" class="tiny">Negative = excluded from computation, still stored and reversible.</text>
+
+  <!-- Collapsed lower folders on the other alternate paths. -->
+  <path class="nested" d="M800 618 V679 M1330 618 V679"/>
+  <rect x="629" y="679" width="342" height="91" rx="13" class="folder"/><text x="651" y="716" class="label">Big Lips profile folder</text><text x="651" y="744" class="small">Nested sources / posts / overrides</text>
+  <rect x="1159" y="679" width="342" height="91" rx="13" class="folder"/><text x="1181" y="716" class="label">Horse profile folder</text><text x="1181" y="744" class="small">Nested sources / posts / overrides</text>
+
+  <!-- Auxiliary influences are not identity lineage. -->
+  <path class="influence" d="M749 920 C700 847 699 724 732 618"/><path class="influence" d="M1136 920 C1167 843 1215 720 1265 618"/>
+  <rect x="632" y="920" width="236" height="88" rx="14" class="junction"/><circle cx="652" cy="964" r="8" class="port"/><text x="680" y="954" class="label">Music junction</text><text x="680" y="980" class="tiny">modifies data influence</text>
+  <rect x="1018" y="920" width="236" height="88" rx="14" class="junction"/><circle cx="1233" cy="964" r="8" class="port"/><text x="1042" y="954" class="label">Video connector</text><text x="1042" y="980" class="tiny">reference input</text>
+  <text x="815" y="1161" class="small" text-anchor="middle">Solid wires = hierarchy / selected data path    •    Dashed wires = auxiliary influence</text>
+  <text x="815" y="1191" class="tiny" text-anchor="middle">Removing a post from a folder changes branch computation; it does not delete the captured record.</text>
+</svg>

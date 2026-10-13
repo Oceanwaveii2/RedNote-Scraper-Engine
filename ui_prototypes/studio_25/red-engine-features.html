@@ -1,0 +1,175 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#0e1119">
+  <title>Red Engine · Feature System — Studio 2.5 Prototype</title>
+  <link rel="icon" href="art/xiaohongshu-logo.png">
+  <link rel="stylesheet" href="art/red-engine-features.css?v=2">
+  <link rel="stylesheet" href="art/red-engine-workspace.css?v=4">
+  <script src="art/red-engine-features.js?v=2" defer></script>
+  <script src="art/red-engine-workspace.js?v=4" defer></script>
+</head>
+<body>
+  <div class="re-shell">
+    <aside class="re-sidebar" aria-label="Red Engine sections">
+      <a class="re-brand" href="index.html#storage" aria-label="Return to Studio 2.5">
+        <span class="re-brand-mark" aria-hidden="true">红</span>
+        <span><strong>RED ENGINE</strong><small>ANALYTICAL SYSTEM</small></span>
+      </a>
+      <p class="re-rail-label">Workspace</p>
+      <nav class="re-nav">
+        <a href="#overview" class="active"><span aria-hidden="true">◫</span> Overview</a>
+        <a href="#study"><span aria-hidden="true">◉</span> Study scope</a>
+        <a href="#tools"><span aria-hidden="true">▦</span> Analysis tools</a>
+        <a href="#sessions"><span aria-hidden="true">✧</span> AI sessions</a>
+        <a href="#findings"><span aria-hidden="true">◇</span> Findings</a>
+        <a href="#contracts"><span aria-hidden="true">⌁</span> Evidence contract</a>
+      </nav>
+      <div class="re-rail-footer">
+        <span class="re-status-dot" aria-hidden="true"></span>
+        <span>Red Engine workspace<br><small>Archive search and presets connected</small></span>
+      </div>
+    </aside>
+
+    <main id="overview" class="re-main">
+      <div class="re-topbar">
+        <span class="re-breadcrumb">Studio 2.5 <span aria-hidden="true">/</span> Red Engine <span aria-hidden="true">/</span> Feature system</span>
+        <div class="re-top-actions">
+          <a href="http://127.0.0.1:5187/" target="_blank" rel="noopener noreferrer">Open mirror graph <span aria-hidden="true">↗</span></a>
+          <a href="index.html#storage">Back to Studio <span aria-hidden="true">↗</span></a>
+        </div>
+      </div>
+
+      <header class="re-hero">
+        <div class="re-hero-copy">
+          <span class="re-eyebrow"><i aria-hidden="true"></i> RED ENGINE / FEATURE SYSTEM</span>
+          <h1>Source-backed <em>marketing</em><br>and data analysis.</h1>
+          <p>Study the captured RedNote mirror with measurable scope, traceable evidence, and reviewed findings. AI sessions help interpret records; they do not replace the source or certify a claim.</p>
+          <div class="re-hero-flags">
+            <span><b>DATA</b> Existing archive candidate</span>
+            <span><b>ENGINE</b> Headless contracts planned</span>
+            <span><b>UI</b> Prototype only</span>
+          </div>
+        </div>
+        <div class="re-flow" aria-label="Proposed analysis workflow">
+          <div><small>01 / INPUT</small><strong>Captured<br>source</strong><span>Posts · comments · media</span></div>
+          <i aria-hidden="true"></i>
+          <div><small>02 / PROCESS</small><strong>Study +<br>measurement</strong><span>Scope · query · model</span></div>
+          <i aria-hidden="true"></i>
+          <div><small>03 / OUTPUT</small><strong>Reviewed<br>finding</strong><span>Citations · limits · decision</span></div>
+        </div>
+      </header>
+
+      <div class="re-active-preset" aria-live="polite">
+        <span>ACTIVE DATABASE PRESET <b id="active-preset-title">Loading…</b></span>
+        <strong id="active-preset-question">Loading the default research question…</strong>
+        <a href="#study">View scope and search seeds ↓</a>
+      </div>
+
+      <div class="re-honesty" role="note"><strong>Prototype boundary</strong><span>Database presets and local text search now read the captured archive. Study execution, ChatGPT or Gemini analysis, findings, and mirror-graph edits are not connected.</span></div>
+
+      <div class="re-feature-map" aria-label="Red Engine feature system stages"><span><b>01</b> Study</span><i></i><span><b>02</b> Explore</span><i></i><span><b>03</b> Evidence graph</span><i></i><span><b>04</b> Findings</span><i></i><span><b>05</b> Review</span></div>
+
+      <section id="study" class="re-section" aria-labelledby="study-heading">
+        <div class="re-section-heading"><div><span class="re-index">01 / RESEARCH CONTROL</span><h2 id="study-heading">Define a study</h2><p>Every metric and model observation must use the same explicit source scope.</p></div><span class="re-tag">Local UI preview</span></div>
+        <div class="re-study-grid">
+          <div class="re-panel re-study-form re-session-composer">
+            <div class="re-composer-head"><span class="re-provider-icon re-gpt" aria-hidden="true">✳</span><div><h3>Research session</h3><p>Ask a question using selected, pinned Red Note evidence.</p></div></div>
+            <div id="re-session-messages" class="re-session-messages" role="log" aria-live="polite"><div class="re-session-intro">Choose a study and up to five captured posts, then submit a question. The engine will save a source-backed request and show its session status here.</div></div>
+            <div class="re-session-controls"><label for="re-session-provider">Model session<select id="re-session-provider"><option value="codex">Codex / GPT</option><option value="gemini">Gemini</option></select></label><div class="re-evidence-heading"><b>Mirror profiles in this study</b><span id="re-session-source-count">0 / 5 selected</span></div><div id="re-session-sources" class="re-session-sources">Choose a saved study to see its captured profiles.</div></div>
+            <div class="re-preset-picker">
+              <label for="research-preset">Database preset<select id="research-preset" aria-label="Research database preset"><option>Loading presets…</option></select></label>
+              <span id="preset-status" role="status">Connecting to local Red Engine research service…</span>
+            </div>
+            <label for="study-question">Message to the research session</label>
+            <div class="re-session-input"><textarea id="study-question" rows="4" maxlength="2000" placeholder="Ask about patterns in the selected captured evidence…"></textarea><button type="button" id="re-submit-session" class="re-session-submit">Submit <span aria-hidden="true">↑</span></button></div>
+            <p id="re-session-submit-status" class="re-session-submit-status" role="status">A submitted request is saved before provider dispatch. No answer appears until a real session responds.</p>
+            <fieldset><legend>Research mode</legend><div class="re-check-grid re-mode-grid">
+              <label><input type="radio" name="study-mode" value="Locked" checked> Locked · pinned archive</label>
+              <label><input type="radio" name="study-mode" value="Discovery"> Discovery · explore corpus</label>
+              <label><input type="radio" name="study-mode" value="External"> External · separately sourced</label>
+            </div></fieldset>
+            <fieldset><legend>Include source types</legend><div class="re-check-grid">
+              <label><input type="checkbox" name="source-type" value="Profiles" checked> Profiles</label>
+              <label><input type="checkbox" name="source-type" value="Posts" checked> Posts</label>
+              <label><input type="checkbox" name="source-type" value="Comments" checked> Comments</label>
+              <label><input type="checkbox" name="source-type" value="Media" checked> Media</label>
+            </div></fieldset>
+            <div class="re-form-pair"><label for="study-inclusion">Inclusion rule<input id="study-inclusion" type="text" placeholder="Profile IDs, post IDs or date window"></label><label for="study-exclusion">Exclusion rule<input id="study-exclusion" type="text" placeholder="Document exclusions and gaps"></label></div>
+            <label for="preset-terms" class="re-terms-label">Search seed terms <small>Exact text matches. These steer ranking, not the answer.</small></label>
+            <textarea id="preset-terms" rows="2" aria-label="Search seed terms, separated by commas"></textarea>
+            <div class="re-preset-save"><input id="new-preset-name" type="text" maxlength="100" placeholder="Name this research preset" aria-label="New preset name"><button type="button" id="save-preset">Save as new preset</button></div>
+            <button type="button" id="scope-preview" class="re-button">Preview study scope <span aria-hidden="true">→</span></button>
+            <small class="re-field-note">The preset is stored separately from mirror data. This scope preview does not create a study or finding.</small>
+          </div>
+          <div class="re-panel re-scope-preview" aria-live="polite">
+            <div class="re-panel-kicker"><span class="re-neon-dot"></span> STUDY MANIFEST / PREVIEW</div>
+            <h3 id="scope-question">No research question yet</h3>
+            <dl><div><dt>Mode</dt><dd id="scope-mode">Locked</dd></div><div><dt>Source types</dt><dd id="scope-types">Profiles · Posts · Comments · Media</dd></div><div><dt>Inclusion</dt><dd id="scope-inclusion">To be defined</dd></div><div><dt>Exclusion</dt><dd id="scope-exclusion">To be defined</dd></div><div><dt>Snapshot</dt><dd>Requires a pinned capture revision</dd></div><div><dt>Coverage</dt><dd>Must disclose unavailable and uncaptured material</dd></div></dl>
+            <div class="re-scope-footer">A real study command would save the scope with an expected revision and source snapshot IDs.</div>
+          </div>
+        </div>
+        <div class="re-panel re-preset-search">
+          <div class="re-search-heading"><div><span class="re-panel-kicker">CAPTURED ARCHIVE / PRESET-WEIGHTED TEXT SEARCH</span><h3>Find relevant source records</h3><p>Preset terms raise relevant matches. An optional exact phrase narrows the results. No profile identity or audience preference is inferred.</p></div><span id="search-count">Waiting for archive</span></div>
+          <form id="preset-search-form" class="re-search-form"><input id="preset-search-query" type="search" maxlength="120" placeholder="Optional exact phrase, e.g. 老婆" aria-label="Search captured posts and comments"><button type="submit">Search captured text →</button></form>
+          <div id="search-results" class="re-search-results" aria-live="polite"><p>Loading preset-ranked records…</p></div>
+          <p id="search-scope-note" class="re-search-note">Results are limited to captured local records and preserve source links.</p>
+        </div>
+      </section>
+
+      <section id="tools" class="re-section" aria-labelledby="tools-heading">
+        <div class="re-section-heading"><div><span class="re-index">02 / ANALYTICAL TOOLKIT</span><h2 id="tools-heading">Choose the right analysis</h2><p>Separate deterministic counts from model interpretations and marketing hypotheses.</p></div><span class="re-tag">Feature plan</span></div>
+        <div class="re-tool-layout">
+          <div class="re-tool-list" role="tablist" aria-label="Analysis feature families">
+            <button role="tab" id="tab-source" aria-controls="panel-source" aria-selected="true" data-tool="source"><span class="re-tool-glyph" aria-hidden="true">⌕</span><span><strong>Explore + trace</strong><small>Chinese search and commenter paths</small></span><b>01</b></button>
+            <button role="tab" id="tab-terms" aria-controls="panel-terms" aria-selected="false" data-tool="terms"><span class="re-tool-glyph" aria-hidden="true">文</span><span><strong>Terminology</strong><small>Original wording and meanings</small></span><b>02</b></button>
+            <button role="tab" id="tab-metrics" aria-controls="panel-metrics" aria-selected="false" data-tool="metrics"><span class="re-tool-glyph" aria-hidden="true">▤</span><span><strong>Measure</strong><small>Saved queries and denominators</small></span><b>03</b></button>
+            <button role="tab" id="tab-discover" aria-controls="panel-discover" aria-selected="false" data-tool="discover"><span class="re-tool-glyph" aria-hidden="true">✺</span><span><strong>Discover</strong><small>Candidate patterns to test</small></span><b>04</b></button>
+            <button role="tab" id="tab-market" aria-controls="panel-market" aria-selected="false" data-tool="market"><span class="re-tool-glyph" aria-hidden="true">↗</span><span><strong>Marketing analysis</strong><small>Content patterns and response</small></span><b>05</b></button>
+            <button role="tab" id="tab-model" aria-controls="panel-model" aria-selected="false" data-tool="model"><span class="re-tool-glyph" aria-hidden="true">✧</span><span><strong>Model observations</strong><small>ChatGPT or Gemini proposals</small></span><b>06</b></button>
+            <button role="tab" id="tab-review" aria-controls="panel-review" aria-selected="false" data-tool="review"><span class="re-tool-glyph" aria-hidden="true">◇</span><span><strong>Finding review</strong><small>Evidence and counterevidence</small></span><b>07</b></button>
+          </div>
+          <div class="re-tool-panels">
+            <article class="re-panel re-tool-panel" id="panel-source" role="tabpanel" aria-labelledby="tab-source"><span class="re-panel-kicker">EXPLORE / PLANNED</span><h3>Find the record, then trace its context.</h3><p>Search original Chinese text by exact term, keyword or tag; add semantic retrieval only after a benchmark. Follow a commenter to their captured profile and thread history when identity is resolved. Inspect source order, creator replies, retained media and capture gaps.</p><div class="re-chip-row"><span>Exact + tag search</span><span>Terminology</span><span>Commenter trace</span><span>Thread path</span></div><div class="re-link-duo"><span>ARCHIVED SOURCE <small>Pinned local record</small></span><span>LIVE SOURCE <small>External locator · availability unknown</small></span></div><div class="re-tool-bottom">Output <b>citable source selectors and separate archived/live links</b></div></article>
+            <article class="re-panel re-tool-panel" id="panel-terms" role="tabpanel" aria-labelledby="tab-terms" hidden><span class="re-panel-kicker">TERMINOLOGY / PLANNED</span><h3>Keep the original phrase in view.</h3><p>Pair exact Chinese wording and alternate spellings with reviewed contextual readings, example threads, counterexamples and uncertainty. A translation correction makes a new revision; it never replaces the captured text.</p><div class="re-chip-row"><span>Original wording</span><span>Alternate form</span><span>Example thread</span><span>Revision</span></div><div class="re-tool-bottom">Output <b>source-linked term notes</b></div></article>
+            <article class="re-panel re-tool-panel" id="panel-metrics" role="tabpanel" aria-labelledby="tab-metrics" hidden><span class="re-panel-kicker">DETERMINISTIC QUERIES / PLANNED</span><h3>Reproduce every number.</h3><p>Save query version, snapshot set, filters, numerator, denominator, distinct-count dimension, missingness and timestamp. Keep counts of comments, accounts, posts and creators separate.</p><div class="re-chip-row"><span>SQL / FTS</span><span>Query version</span><span>Denominator</span><span>Missingness</span></div><div class="re-tool-bottom">Output <b>auditable measurements</b></div></article>
+            <article class="re-panel re-tool-panel" id="panel-discover" role="tabpanel" aria-labelledby="tab-discover" hidden><span class="re-panel-kicker">DISCOVER / PROPOSED</span><h3>Find something worth testing next.</h3><p>Generate candidate patterns or unexpected combinations with source examples and counterexamples. Record the comparison to test, then evaluate it on a distinct held-out selection. A discovery suggestion does not become a finding automatically.</p><div class="re-chip-row"><span>Candidate pattern</span><span>Counterexample</span><span>Held-out test</span><span>Uncertainty</span></div><div class="re-tool-bottom">Output <b>testable research questions</b></div></article>
+            <article class="re-panel re-tool-panel" id="panel-market" role="tabpanel" aria-labelledby="tab-market" hidden><span class="re-panel-kicker">MARKETING STUDY / PROPOSED</span><h3>Compare response without inflating intent.</h3><p>Compare captured themes, formats, engagement patterns and creator responses within a named study. Keep admiration, shopping inquiry and reported purchase as separate categories. Show sample size and time window; a captured collection is not the wider audience.</p><div class="re-chip-row"><span>Admiration</span><span>Shopping inquiry</span><span>Reported purchase</span><span>Creator replies</span></div><div class="re-tool-bottom">Output <b>qualified market hypotheses</b></div></article>
+            <article class="re-panel re-tool-panel" id="panel-model" role="tabpanel" aria-labelledby="tab-model" hidden><span class="re-panel-kicker">AI-ASSISTED ANALYSIS / UPGRADE NEEDED</span><h3>Interpret with a recorded session.</h3><p>Provide bounded, cited source selections to ChatGPT or Gemini only after a capability and transport check. Preserve model/provider revision, prompt version, omissions, receipts and uncertainty. Model output becomes a proposed observation, not a verified finding.</p><div class="re-chip-row"><span>Provider check</span><span>Prompt revision</span><span>Citations</span><span>Review queue</span></div><div class="re-tool-bottom">Output <b>reviewable observations</b></div></article>
+            <article class="re-panel re-tool-panel" id="panel-review" role="tabpanel" aria-labelledby="tab-review" hidden><span class="re-panel-kicker">REVIEW / PLANNED</span><h3>Make disagreement visible.</h3><p>Review support and counterexamples with exact source selectors, translation corrections, model disagreements, uncertainty and capture gaps. Approvals move findings through proposed, reviewed, rejected and superseded states; source evidence stays untouched.</p><div class="re-chip-row"><span>Translation correction</span><span>Model disagreement</span><span>Counterevidence</span><span>Approval</span></div><div class="re-tool-bottom">Output <b>versioned research findings</b></div></article>
+          </div>
+        </div>
+        <div class="re-graph-teaser"><div class="re-graph-symbol" aria-hidden="true"><i></i><i></i><i></i><i></i></div><div><span class="re-panel-kicker">EVIDENCE GRAPH / READ-ONLY UI PROTOTYPE</span><strong>See the captured relationship, not an editable engine graph.</strong><p>Source references and observed profile, post, comment and media links can be visualized. Future annotations and finding relationships must remain separate from captured facts.</p></div><a href="http://127.0.0.1:5187/" target="_blank" rel="noopener noreferrer">Open mirror graph ↗</a></div>
+      </section>
+
+      <section id="sessions" class="re-section" aria-labelledby="sessions-heading">
+        <div class="re-section-heading"><div><span class="re-index">03 / SESSION ADAPTERS</span><h2 id="sessions-heading">ChatGPT / Codex + Gemini</h2><p>Existing bridges cover different slices of the workflow. Source-backed Red studies, durable jobs and finding review still require an upgrade.</p></div><span class="re-tag re-tag-amber">Red integration pending</span></div>
+        <div class="re-session-grid">
+          <article class="re-panel re-session"><div class="re-session-top"><span class="re-provider-icon re-gpt">✳</span><div><h3>ChatGPT / Codex</h3><small>Archive-aware Codex adapter exists</small></div><span class="re-state re-state-limited">Limited read</span></div><p>Current adapter exposes signed-in model/chat actions and bounded archive reads: catalog counts, paged rows, one saved image preview, capture ledger and diagnostics. Study scopes, saved measures and cited finding records are not there yet.</p><div class="re-session-foot"><span>Existing: exploratory archive tools</span><span>Upgrade: study + evidence workflow</span></div></article>
+          <article class="re-panel re-session"><div class="re-session-top"><span class="re-provider-icon re-gemini">✦</span><div><h3>Gemini</h3><small>Graph-board session bridge exists</small></div><span class="re-state">No archive tools</span></div><p>The board bridge excludes source text and media. Its model list is toolkit-declared, not a live entitlement check; process discovery does not prove inference. A source-aware adapter and verified session are needed for Red studies.</p><div class="re-session-foot"><span>Existing: board chat metadata</span><span>Upgrade: archive + evidence tools</span></div></article>
+        </div>
+        <div class="re-two-way"><div><b>MODEL → ENGINE TOOLS</b><p>A bounded session may request study-scoped source pages, exact search, saved measures and source selectors. The engine enforces scope and logs each call.</p></div><div><b>ENGINE → MODEL TASKS</b><p>The engine submits a source packet and records session, response, interruption or awaiting-session state. Output enters review as a cited proposal.</p></div></div>
+        <div class="re-readiness"><div><strong>Provider readiness</strong><span>Current limits vs the Red analysis target</span></div><ul><li>Transport <b>check live</b></li><li>Auth + model <b>check live</b></li><li>Inference <b>check live</b></li><li>Archive access <b>Codex: limited / Gemini: absent here</b></li><li>Study evidence flow <b>upgrade</b></li></ul></div>
+        <div class="re-job-preview"><div><span class="re-panel-kicker">TASK ROUTING / UI CONTRACT</span><h3>Inspect the packet before the model sees it.</h3><p>A research job should preview the pinned study, source selectors, original-language snippets, media availability and omitted records. It then records provider, model, session ID, response and interruption receipts.</p></div><div><span class="re-panel-kicker">DURABLE JOB STATES / PLANNED</span><div class="re-job-states"><span>Queued</span><span>Running</span><span>Awaiting session</span><span>Awaiting review</span><span>Failed</span><span>Completed</span></div></div></div>
+        <div class="re-upgrade-strip"><strong>Session upgrade path</strong><span>Capability discovery <i>→</i> scoped evidence packet <i>→</i> queued job + receipt <i>→</i> cited observation <i>→</i> human review</span></div>
+      </section>
+
+      <section id="findings" class="re-section" aria-labelledby="findings-heading">
+        <div class="re-section-heading"><div><span class="re-index">04 / REVIEW DESK</span><h2 id="findings-heading">A finding is a claim with a trail.</h2><p>Evidence, sample limits and counterexamples stay beside the conclusion.</p></div><span class="re-tag">Proposed workflow</span></div>
+        <div class="re-finding-grid">
+          <div class="re-panel re-finding-card"><span class="re-panel-kicker">FINDING RECORD / SCHEMA PREVIEW</span><h3>Claim under review</h3><p class="re-placeholder">No analytical finding is connected to this UI.</p><div class="re-finding-steps"><span>Proposed</span><i></i><span>Reviewed</span><i></i><span>Superseded</span></div></div>
+          <div class="re-evidence-stack"><div class="re-panel"><b class="re-evidence-accent">01</b><div><strong>Supporting source</strong><small>Exact post, comment, media slot or text span</small></div></div><div class="re-panel"><b class="re-evidence-accent amber">02</b><div><strong>Counterevidence</strong><small>Disagreement and contradictory examples</small></div></div><div class="re-panel"><b class="re-evidence-accent blue">03</b><div><strong>Limits of capture</strong><small>Unknown or unavailable material stays explicit</small></div></div></div>
+        </div>
+      </section>
+
+      <section id="contracts" class="re-section" aria-labelledby="contracts-heading">
+        <div class="re-section-heading"><div><span class="re-index">05 / SYSTEM BOUNDARY</span><h2 id="contracts-heading">Three layers. One evidence trail.</h2><p>The visual graph is a read-only projection; analytical records live in the headless Red Engine when built.</p></div></div>
+        <div class="re-layer-row"><div class="re-layer"><span>DATA LAYER</span><strong>Captured archive</strong><p>RedNote source records, media, revisions and coverage. Future TikTok or Instagram sources would require separate adapters and provenance.</p></div><b aria-hidden="true">→</b><div class="re-layer"><span>ENGINE LAYER</span><strong>Red analysis</strong><p>Studies, saved measurements, model observations, reviewed findings and job receipts.</p></div><b aria-hidden="true">→</b><div class="re-layer"><span>UI LAYER</span><strong>Research console</strong><p>This feature-system prototype and the separate read-only mirror graph.</p></div></div>
+        <footer class="re-footer"><span>Based on the 2026-10-10 Red Engine + Scatter rebuild scheme. Feature UI is a proposal, not an operational claim.</span><a href="http://127.0.0.1:5187/" target="_blank" rel="noopener noreferrer">Mirror graph ↗</a></footer>
+      </section>
+    </main>
+  </div>
+</body>
+</html>

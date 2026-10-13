@@ -1,0 +1,11 @@
+.graph-links{display:grid;gap:5px;margin-top:17px;padding-top:14px;border-top:1px solid var(--line)}
+.graph-links-heading{padding:0 15px 4px;color:var(--muted);font-size:11px;font-weight:700;letter-spacing:.09em;text-transform:uppercase}
+.graph-link{display:flex;align-items:center;justify-content:flex-start;gap:12px;min-height:52px;padding:10px 15px;border:1px solid transparent;border-radius:8px;color:#bbbcc9;text-decoration:none;transition:background .15s,color .15s}
+.graph-link:hover{background:#222229;color:#fff}
+.graph-link .icon{width:21px;height:21px}
+.graph-link span{display:block;min-width:0;font-size:15px;line-height:1.18}
+.graph-link small{display:block;margin-top:3px;color:var(--muted);font-size:11px;line-height:1.15}
+.graph-link-scatter:hover .icon{color:var(--red)}
+.graph-link-red:hover .icon{color:#55c8eb}
+.graph-link-feature:hover .icon{color:#ff6f87}
+@media(max-height:720px){.sidebar{overflow-y:auto}}

@@ -1,0 +1,78 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environments
+.venv/
+venv/
+ENV/
+env/
+
+# Node / Web UI
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+ui_prototypes/**/dist/
+ui_prototypes/**/build/
+
+# Packaging / Distribution
+dist/
+build/
+*.egg-info/
+*.spec
+
+# Browser Automation & Cache
+.playwright-cli/
+browser-session/
+EBWebView/
+ShaderCache/
+SmartScreen/
+
+# Runtime databases & caches
+*.sqlite
+*.sqlite3
+*.db
+!data_schemas/*.sql
+data/
+data_v2/
+downloads/
+output/
+clone_media/
+
+# Logs & temp files
+*.log
+*.tmp
+*.bak
+*.swp
+*.patch
+.bridge-workspace/
+*profile-backup*
+*before-background*
+
+# Secrets & Local Environment
+.env
+.env.local
+.env.*.local
+*.key
+*.pem
+credentials.json
+gemini-project.local.json
+
+# Heavy Media & Raw Reference Files (Keeps repo compact < 20MB for fast import)
+*.psd
+*.mp4
+*.mkv
+*.mov
+*.pdf
+references/
+**/assets/review/
+**/assets/pdf/
+**/assets/concepts/
+
+# OS files
+.DS_Store
+Thumbs.db
+desktop.ini

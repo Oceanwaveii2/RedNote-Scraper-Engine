@@ -1,0 +1,45 @@
+.graph-view-bar{display:flex;gap:4px;padding:3px;background:#151b29;border:1px solid #33465f;border-radius:10px;white-space:nowrap}
+.graph-view-bar button{padding:7px 9px;border:0;background:transparent;color:#b9c8dc;font-size:12px}
+.graph-view-bar button[aria-pressed=true]{background:#073a67;color:#e8f8ff;box-shadow:inset 0 0 0 1px #39adff}
+.graph-view-bar button:hover{background:#234360}
+.graph-lane-bar{position:absolute;z-index:13;top:15px;left:18px;display:flex;gap:3px;padding:4px;background:#0d1926ef;border:1px solid #3e6787;border-radius:10px;box-shadow:0 8px 25px #0009}
+.graph-lane-bar[hidden]{display:none}
+.graph-lane-bar button{padding:7px 9px;border:0;background:transparent;color:#b6d0e4;font-size:11px;white-space:nowrap}
+.graph-lane-bar button[aria-pressed=true]{background:#07517f;color:#fff;box-shadow:inset 0 0 0 1px #4ac1ff}
+.graph-legend{display:flex;flex-wrap:wrap;gap:6px 9px;padding:12px 1px 2px;font-size:10px;color:#aebacb}
+.graph-legend span::before{content:'';display:inline-block;width:14px;height:3px;vertical-align:middle;margin-right:4px;background:#fb6e88;border-radius:3px}
+.graph-legend .legend-character::before{background:#f2c977}.graph-legend .legend-video::before{background:#ff4c72}.graph-legend .legend-music::before{background:#42bdf5}.graph-legend .legend-story::before{background:#9ba9b7}
+#arrangeSemanticLanes{color:#bfe8ff}
+#outputScope{padding:14px 0 17px;border-bottom:1px solid #30333c}
+#outputScope[hidden]{display:none}
+#outputScope h3{margin:0 0 5px;font-size:14px;color:#e5f6ff}
+#outputScope .scope-note{margin:0 0 12px;color:#9cb2c7;font-size:11px;line-height:1.5}
+.scope-group{padding:8px 0;border-top:1px solid #293442;display:grid;gap:5px}
+.scope-group>b{font-size:10px;text-transform:uppercase;letter-spacing:1px;color:#61c8ff}
+.scope-group .scope-row{padding:6px 8px;text-align:left;font-size:11px;background:#172331;border-color:#314354;overflow-wrap:anywhere}
+.scope-group small,.scope-empty{font-size:10px;color:#a8b3c4}
+.scope-foot{margin:10px 0 0!important;font-size:10px!important;color:#f0bfcb!important}
+#graphMap{position:absolute;z-index:12;left:auto;top:auto;right:20px;bottom:72px;width:205px;height:174px;padding:9px;background:#101722ec;border:1px solid #43566b;border-radius:12px;box-shadow:0 12px 30px #0008;overflow:hidden}
+.map-head{height:24px;display:flex;align-items:center;justify-content:space-between;color:#a6d9fc;font-size:10px;letter-spacing:1px}
+.map-head button{font-size:10px;padding:2px 5px;border:0;background:transparent;color:#cbeafa}
+#mapSvg{display:block;width:100%;height:119px;background:#0b1320;border-radius:5px;cursor:crosshair}
+.map-node{fill:#60778e;stroke:#9caec0;stroke-width:8px;cursor:pointer}
+.map-node.map-core{fill:#0b76bd;stroke:#49c8ff}.map-node.map-lips{fill:#bb3a76;stroke:#ff91bf}.map-node.map-horse{fill:#b67b2d;stroke:#ffd77b}.map-node.map-master{fill:#e84572;stroke:#ffc2d5}.map-node.map-hidden{opacity:.35}
+.map-viewport{fill:#ffffff13;stroke:#fff;stroke-width:18px;pointer-events:none}
+#mapStatus{font-size:10px;color:#a8b6c7;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;display:block;margin-top:3px}
+#cards>.node[hidden],#groups .branch-frame[hidden]{display:none!important}
+#cards>.node.graph-filtered{visibility:hidden!important;pointer-events:none!important}
+.path-tracing #cards>.node.muted-node{opacity:.28;filter:saturate(.45)}
+#wires .wire.muted-edge{opacity:.10}
+#wires .wire.edge-character{stroke:#e8c36f}
+#wires .wire.edge-video{stroke:#ff3b65}
+#wires .wire.edge-music{stroke:#3ebeff}
+#wires .wire.edge-story{stroke:#9ca8b9}
+#wires .wire.trace-edge{opacity:1;stroke:#f4dd7c;stroke-width:8}
+#wires .wire-hit.muted-edge{pointer-events:none}
+body:not([data-graph-view=all]) #wires .wire-flow{display:none}
+body:not([data-graph-view=all]) #groups .branch-frame{display:none}
+body[data-graph-view=compact] #wires .wire:not(.trace-edge){opacity:.3}
+@media(max-width:1050px){.graph-view-bar{order:7}.graph-view-bar button{font-size:11px;padding:6px 7px}#graphMap{width:160px;height:145px;bottom:66px}#mapSvg{height:95px}}
+@media(max-width:650px){#graphMap{width:125px;height:120px;right:8px;bottom:55px;padding:5px}#mapSvg{height:78px}.map-head{height:20px}}
+@media(max-width:1050px){.graph-lane-bar{max-width:calc(100% - 35px);overflow-x:auto}}

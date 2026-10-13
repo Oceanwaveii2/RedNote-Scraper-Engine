@@ -1,0 +1,37 @@
+{"utc": "2026-10-09T08:30:01.072796+00:00", "event": "started", "jobId": "601f49f14a8b4f2b91b506e140505d91", "provider": "codex", "operation": "connect", "elapsedSeconds": 0.0}
+{"utc": "2026-10-09T08:30:01.813494+00:00", "event": "completed", "jobId": "601f49f14a8b4f2b91b506e140505d91", "provider": "codex", "operation": "connect", "elapsedSeconds": 0.741}
+{"utc": "2026-10-09T08:31:34.859687+00:00", "event": "started", "jobId": "50d5c3fbb16646419745b2940b00669a", "provider": "codex", "operation": "review", "elapsedSeconds": 0.0, "model": "gpt-6.1-sol"}
+{"utc": "2026-10-09T08:31:46.941903+00:00", "event": "completed", "jobId": "50d5c3fbb16646419745b2940b00669a", "provider": "codex", "operation": "review", "elapsedSeconds": 12.082, "model": "gpt-6.1-sol"}
+{"utc": "2026-10-09T08:32:20.133962+00:00", "event": "started", "jobId": "d48546ac3a7d47958bec2741536fc224", "provider": "gemini", "operation": "connect", "elapsedSeconds": 0.0}
+{"utc": "2026-10-09T08:32:20.281989+00:00", "event": "completed", "jobId": "d48546ac3a7d47958bec2741536fc224", "provider": "gemini", "operation": "connect", "elapsedSeconds": 0.148}
+{"utc": "2026-10-09T08:32:58.950182+00:00", "event": "started", "jobId": "95c99b0b0a484d79854fb97cf9b9b553", "provider": "gemini", "operation": "review", "elapsedSeconds": 0.0, "model": "flash"}
+{"utc": "2026-10-09T08:32:59.089307+00:00", "event": "failed", "jobId": "95c99b0b0a484d79854fb97cf9b9b553", "provider": "gemini", "operation": "review", "elapsedSeconds": 0.139, "model": "flash"}
+{"utc": "2026-10-09T08:47:15.614481+00:00", "event": "started", "jobId": "c382499264254cab9e7a4be9c153a789", "provider": "gemini", "operation": "connect", "elapsedSeconds": 0.0}
+{"utc": "2026-10-09T08:47:15.790029+00:00", "event": "completed", "jobId": "c382499264254cab9e7a4be9c153a789", "provider": "gemini", "operation": "connect", "elapsedSeconds": 0.176}
+{"utc": "2026-10-09T08:48:06.961811+00:00", "event": "started", "jobId": "1e478d00dd5e4295a9b84968cf02eb6f", "provider": "gemini", "operation": "review", "elapsedSeconds": 0.0, "model": "flash"}
+{"utc": "2026-10-09T08:48:45.990814+00:00", "event": "completed", "jobId": "1e478d00dd5e4295a9b84968cf02eb6f", "provider": "gemini", "operation": "review", "elapsedSeconds": 39.029, "model": "flash"}
+{"utc": "2026-10-09T08:54:54.183659+00:00", "event": "started", "jobId": "5bea31ff72634c77a6f8f38c69d1147a", "provider": "gemini", "operation": "review", "elapsedSeconds": 0.0, "model": "flash"}
+{"utc": "2026-10-09T08:56:01.900592+00:00", "event": "completed", "jobId": "5bea31ff72634c77a6f8f38c69d1147a", "provider": "gemini", "operation": "review", "elapsedSeconds": 67.717, "model": "flash"}
+{"utc": "2026-10-09T09:26:12.192474+00:00", "event": "started", "jobId": "0964a992855d4c4cb25eb8d8d0eafe11", "provider": "gemini", "operation": "connect", "elapsedSeconds": 0.0}
+{"utc": "2026-10-09T09:26:12.377189+00:00", "event": "completed", "jobId": "0964a992855d4c4cb25eb8d8d0eafe11", "provider": "gemini", "operation": "connect", "elapsedSeconds": 0.185}
+{"utc": "2026-10-09T09:26:44.318123+00:00", "event": "started", "jobId": "143724a5efa54ebaa7ad6f439327a20e", "provider": "gemini", "operation": "review", "elapsedSeconds": 0.0, "model": "flash"}
+{"utc": "2026-10-09T09:26:44.550885+00:00", "event": "failed", "jobId": "143724a5efa54ebaa7ad6f439327a20e", "provider": "gemini", "operation": "review", "elapsedSeconds": 0.233, "model": "flash"}
+{"utc": "2026-10-09T09:37:24.646164+00:00", "event": "started", "jobId": "c3e8a6b1169e4a50ae87b848ee7fb1d8", "provider": "gemini", "operation": "review", "elapsedSeconds": 0.0, "model": "flash"}
+{"utc": "2026-10-09T09:37:24.871580+00:00", "event": "failed", "jobId": "c3e8a6b1169e4a50ae87b848ee7fb1d8", "provider": "gemini", "operation": "review", "elapsedSeconds": 0.225, "model": "flash"}
+{"utc": "2026-10-09T10:00:52.888953+00:00", "event": "started", "jobId": "75a5c49f78b74db7bfcee9e04c015474", "provider": "gemini", "operation": "review", "elapsedSeconds": 0.0, "model": "pro"}
+{"utc": "2026-10-09T10:00:53.065575+00:00", "event": "failed", "jobId": "75a5c49f78b74db7bfcee9e04c015474", "provider": "gemini", "operation": "review", "elapsedSeconds": 0.177, "model": "pro"}
+{"utc": "2026-10-09T18:38:58.820814+00:00", "event": "started", "jobId": "bf884bb4918848b0850e9ad43412195f", "provider": "gemini", "operation": "connect", "elapsedSeconds": 0.0}
+{"utc": "2026-10-09T18:38:58.948618+00:00", "event": "completed", "jobId": "bf884bb4918848b0850e9ad43412195f", "provider": "gemini", "operation": "connect", "elapsedSeconds": 0.128}
+{"utc": "2026-10-09T18:39:12.699763+00:00", "event": "started", "jobId": "f91c75c0c83441e79f1cb8e40b127522", "provider": "codex", "operation": "connect", "elapsedSeconds": 0.0}
+{"utc": "2026-10-09T18:39:13.350516+00:00", "event": "completed", "jobId": "f91c75c0c83441e79f1cb8e40b127522", "provider": "codex", "operation": "connect", "elapsedSeconds": 0.651}
+{"utc": "2026-10-09T18:39:37.017202+00:00", "event": "started", "jobId": "fafe05b6d34b4f228d8fbdb7fdfea44c", "provider": "gemini", "operation": "review", "elapsedSeconds": 0.0, "model": "flash"}
+{"utc": "2026-10-09T18:39:37.170234+00:00", "event": "failed", "jobId": "fafe05b6d34b4f228d8fbdb7fdfea44c", "provider": "gemini", "operation": "review", "elapsedSeconds": 0.153, "model": "flash"}
+{"utc": "2026-10-09T18:40:42.811490+00:00", "event": "started", "jobId": "0ec9e82ce3034c45a335b15f43a6d60d", "provider": "codex", "operation": "review", "elapsedSeconds": 0.0, "model": "gpt-6.1-sol"}
+{"utc": "2026-10-09T18:40:53.383563+00:00", "event": "completed", "jobId": "0ec9e82ce3034c45a335b15f43a6d60d", "provider": "codex", "operation": "review", "elapsedSeconds": 10.572, "model": "gpt-6.1-sol"}
+{"utc": "2026-10-09T18:41:18.460995+00:00", "event": "started", "jobId": "test1", "provider": "gemini", "operation": "connect", "elapsedSeconds": 0.0}
+{"utc": "2026-10-09T18:41:22.142420+00:00", "event": "started", "jobId": "137858c3eb4849e687f5eb6cc135bdb4", "provider": "gemini", "operation": "connect", "elapsedSeconds": 0.0}
+{"utc": "2026-10-09T18:41:22.255388+00:00", "event": "completed", "jobId": "137858c3eb4849e687f5eb6cc135bdb4", "provider": "gemini", "operation": "connect", "elapsedSeconds": 0.113}
+{"utc": "2026-10-09T18:41:23.143199+00:00", "event": "started", "jobId": "2f0d914e1a6b43489c231fb3be538cbc", "provider": "gemini", "operation": "review", "elapsedSeconds": 0.0, "model": "flash"}
+{"utc": "2026-10-09T18:41:33.492025+00:00", "event": "started", "jobId": "91d1c17c2e364ba1be3bef4bede32165", "provider": "gemini", "operation": "connect", "elapsedSeconds": 0.0}
+{"utc": "2026-10-09T18:41:33.584775+00:00", "event": "completed", "jobId": "91d1c17c2e364ba1be3bef4bede32165", "provider": "gemini", "operation": "connect", "elapsedSeconds": 0.093}
+{"utc": "2026-10-09T18:41:34.492719+00:00", "event": "started", "jobId": "e9a13f0c722d47efb9ede92d7a4f803d", "provider": "gemini", "operation": "review", "elapsedSeconds": 0.0, "model": "flash"}

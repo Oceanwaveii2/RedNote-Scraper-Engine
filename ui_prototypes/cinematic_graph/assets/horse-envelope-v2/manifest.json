@@ -1,0 +1,99 @@
+{
+  "width": 728,
+  "height": 1294,
+  "source": "D:\\0\\Noir Fiction Engine\\01_Mining_App\\Reel_Harvest\\prototype_graph\\references\\lunar-envelope\\year-of-horse-node-v1.png",
+  "sourceCrop": {
+    "x": 148,
+    "y": 78,
+    "width": 728,
+    "height": 1294
+  },
+  "layers": [
+    {
+      "name": "Header · gold clouds and red paper",
+      "file": "header.png",
+      "left": 0,
+      "top": 0,
+      "width": 728,
+      "height": 254
+    },
+    {
+      "name": "Horse preview · image and inner frame",
+      "file": "horse-preview.png",
+      "left": 0,
+      "top": 254,
+      "width": 728,
+      "height": 476
+    },
+    {
+      "name": "Envelope pocket · seal, clouds and tassel",
+      "file": "pocket.png",
+      "left": 0,
+      "top": 730,
+      "width": 728,
+      "height": 290
+    },
+    {
+      "name": "Footer · gold frame and control artwork",
+      "file": "footer.png",
+      "left": 0,
+      "top": 1020,
+      "width": 728,
+      "height": 274
+    }
+  ],
+  "title": {
+    "text": "Year of the Horse",
+    "font": "TimesNewRomanPS-BoldMT",
+    "fontSize": 54,
+    "x": 168,
+    "baseline": 170,
+    "color": "#ffe49b"
+  },
+  "notes": "Bands preserve source pixels and ornaments. English title alone is replaced by sampled paper and editable text. Chinese heading and brand are retained in the artwork. Preview band includes the source horse and its surrounding frame.",
+  "psd": {
+    "path": "D:\\0\\Noir Fiction Engine\\01_Mining_App\\Reel_Harvest\\prototype_graph\\references\\lunar-envelope\\year-of-horse-layered-v2.psd",
+    "layers": [
+      {
+        "name": "Header · gold clouds and red paper",
+        "editableText": null
+      },
+      {
+        "name": "Horse preview · image and inner frame",
+        "editableText": null
+      },
+      {
+        "name": "Envelope pocket · seal, clouds and tassel",
+        "editableText": null
+      },
+      {
+        "name": "Footer · gold frame and control artwork",
+        "editableText": null
+      },
+      {
+        "name": "English title · editable text",
+        "editableText": "Year of the Horse"
+      },
+      {
+        "name": "Gold sparkle highlights · independent overlay",
+        "editableText": null
+      },
+      {
+        "name": "Top · gold connector port",
+        "editableText": null
+      },
+      {
+        "name": "Left · gold connector port",
+        "editableText": null
+      },
+      {
+        "name": "Right · gold connector port",
+        "editableText": null
+      },
+      {
+        "name": "Bottom · gold connector port",
+        "editableText": null
+      }
+    ]
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "change": "New captured-profile analytical report and Red Engine receipts; no source archive files modified",
+  "created_at_utc": "2026-10-11",
+  "report": "Red_Engine/LING_ZI_PROFILE_REPORT_2026-10-11.md",
+  "report_sha256": "cfa5176ffa2ac32f95bb4f3420576c05f0744e6bef07ba5c73ffb51cb8371c9b",
+  "study_id": "study-ed066c5c0e15471aabc92c25c7ef0e53",
+  "study_manifest_hash": "8a369e4b3a738b5e3853fa803d7edd6673bc53251d699eefc2857d91a9427960",
+  "measurement_id": "measure-0d937a342aec475aa8dab874d2cca18d",
+  "measurement_result_hash": "9a0551e3c31c81dc5e369a16d888eaff1509f36ec4b07875952d12cce5e7504f",
+  "proposed_finding_ids": [
+    "finding-8ed84689f3164fe8af8b033ae8b160c9",
+    "finding-53bb7c24e6a5476ea30c893e067f8729",
+    "finding-e8330966428b4f2faed9f68e7d675127"
+  ],
+  "review_state": "proposed; no human decision recorded"
+}

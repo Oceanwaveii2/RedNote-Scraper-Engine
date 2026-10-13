@@ -1,0 +1,49 @@
+/* Responsive chrome only: custom node artwork keeps its authored geometry. */
+body>header{min-width:0;overflow-x:auto;overflow-y:hidden;overscroll-behavior-x:contain}
+body>header>*{flex-shrink:0}
+#boardSidebar{min-width:0;overscroll-behavior:contain}
+#viewport{min-width:0}
+.graph-tool-grid{grid-template-columns:repeat(4,minmax(0,1fr))}
+.graph-tool-grid [data-node-type]{touch-action:none;cursor:grab}
+.graph-tool-grid [data-node-type]:active{cursor:grabbing}
+.precision-more{display:none}
+dialog{width:min(var(--dialog-width,840px),calc(100vw - 24px));max-width:calc(100vw - 24px);max-height:calc(100dvh - 24px);overflow:auto}
+dialog .dialoghead,dialog .editor-actions,dialog .storage-search{flex-wrap:wrap;gap:10px}
+dialog input,dialog select,dialog textarea{max-width:100%;min-width:0}
+#mirrorDialog,#containerDialog,#aiReview,#viewer,.mirror-profile-dialog,.mirror-post-dialog,.scatter-document-editor{width:min(1100px,calc(100vw - 24px));max-width:calc(100vw - 24px)}
+.mirror-graph-dock{max-width:calc(100vw - 24px);max-height:calc(100dvh - 86px)}
+.graph-tool-tooltip{max-width:min(270px,calc(100vw - 24px))}
+@media(max-width:900px){
+  #boardSidebar{width:min(320px,calc(100vw - 48px));box-shadow:12px 0 40px #000b}
+  #viewport,.tools-closed #viewport{left:0}
+  body>header{gap:6px;padding-inline:10px}
+  body>header #sceneView,body>header #branchView,body>header #popout,body>header #openAIReview,body>header .reference-link{display:inline-flex}
+  .mirror-graph-dock{left:12px;top:76px}
+  .graph-navigator{width:min(310px,calc(100% - 28px))}
+}
+@media(max-width:620px){
+  body>header{height:64px}
+  #boardSidebar,#viewport{top:64px}
+  #boardSidebar{bottom:38px;padding:18px 14px 24px}
+  .mirror-graph-dock{top:70px;max-height:calc(100dvh - 78px)}
+  .graph-tool-grid{gap:6px}
+  .board-tools .graph-icon-tool{min-height:48px;height:48px}
+  .graph-navigator{top:60px;right:8px;max-height:calc(100% - 142px)}
+  .zoom{right:8px;top:12px;bottom:auto;max-width:calc(100% - 16px);overflow-x:auto}
+  dialog{padding:16px}
+  .workspace,.ai-review-grid,.document-layout{grid-template-columns:minmax(0,1fr)}
+  #mirrorItems,.mirror-profile-posts{grid-template-columns:minmax(0,1fr)}
+  .mirror-post-row{flex-wrap:wrap}
+  .mirror-post-row>div{flex-basis:calc(100% - 76px)}
+  .mirror-profile-hero{flex-wrap:wrap}
+  .mirror-profile-hero-actions{flex-wrap:wrap}
+  .graph-precision-hud{max-width:calc(100% - 16px);width:auto;left:8px;right:auto;bottom:8px;gap:5px;padding:5px}
+  .graph-precision-hud .precision-more{display:inline-flex}
+  .graph-precision-hud:not(.precision-compact-open) label,.graph-precision-hud:not(.precision-compact-open) .precision-apply{display:none}
+  .graph-precision-hud.precision-compact-open{width:calc(100% - 16px)}
+}
+@media(max-width:400px){
+  .graph-tool-grid{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .mirror-profile-dialog,.mirror-post-dialog,.scatter-document-editor{padding:12px}
+  .mirror-profile-posts{grid-template-columns:minmax(0,1fr)}
+}
