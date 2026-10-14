@@ -28,7 +28,9 @@ The cinematic graph loads `scatter-spatial-core.js` and
 incrementally indexes variable-size node bounds. The renderer queries the
 viewport, draws the relevant wires in one Canvas 2D frame, and retains only
 visible SVG connection hit targets. It coalesces pan, zoom, and drag changes in
-`requestAnimationFrame`. Custom HTML cards and their editors are unchanged;
+`requestAnimationFrame`. On boards over 200 nodes, the renderer mounts a bounded
+set of nearby custom HTML cards and represents the rest with selectable canvas
+proxies or low-zoom clusters. The current small board keeps every custom card;
 `content-visibility` lets the browser skip work for offscreen interiors.
 
 The mirror adapter now walks every included captured post for every profile in
@@ -43,6 +45,9 @@ disabled for the story rendering turn. The resulting receipt records model,
 thread, and turn IDs. Grok and Gemini routes now fail explicitly until real
 story adapters exist; no locally constructed draft may be labeled as their
 output. Export of user-supplied text has an empty provider list.
+The graph preview server now has a same-origin proxy for the headless pipeline;
+`pipeline-nodes-ui.js` is still not loaded into the board while its custom
+card integration is revised. No visual story button is claimed operational.
 
 ## Next integration boundaries
 
@@ -53,9 +58,9 @@ output. Export of user-supplied text has an empty provider list.
    streaming. Compile branch context deterministically before provider work.
 3. Add separately accountable Gemini and Grok story adapters with availability
    probes, cancellation, receipts, restart recovery, and no assumed login.
-4. Add low-zoom card impostors and a typed DOM pool only after preserving the
-   existing Protagonist, Branch, Profile, Video, Music, LLM, Prose, and document
-   designs. Measure frame time and memory before choosing WebGPU/PixiJS.
+4. Preserve and review each existing Protagonist, Branch, Profile, Video,
+   Music, LLM, Prose, and document template in the bounded DOM path. Measure
+   frame time and memory before choosing WebGPU/PixiJS.
 
 No 50,000-node frame-rate or live Grok/Gemini claim follows from the code in
 this branch. Those require integrated runtime measurements and real sessions.
