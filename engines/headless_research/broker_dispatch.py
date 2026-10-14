@@ -14,8 +14,8 @@ from study_storage import SqliteArchive, SqliteStudies
 
 
 HERE = Path(__file__).resolve().parent
-HARVEST = HERE.parent / "01_Mining_App" / "Reel_Harvest"
-sys.path.insert(0, str(HARVEST))
+BRIDGE_KITS = HERE.parent.parent / "ui_prototypes" / "cinematic_graph" / "bridge_kits"
+sys.path.insert(0, str(BRIDGE_KITS))
 from codex_bridge_kit import CodexClient  # noqa: E402
 
 

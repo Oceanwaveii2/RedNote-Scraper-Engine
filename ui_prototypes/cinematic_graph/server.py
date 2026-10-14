@@ -1,14 +1,13 @@
 """Loopback graph preview with a bounded read-only Mirror Storage bridge."""
 from http.server import SimpleHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
-import json,re,socket
+import json,os,re,socket
 from urllib.request import Request,urlopen
 from urllib.error import HTTPError,URLError
 from ui_bridge import bridge
 ROOT=Path(__file__).resolve().parent
-INPUTS=Path(r'D:\0\Noir Fiction Engine\00_ADMIN\RedNote_Graph_UI_Pass1_20261008\video-inputs.json')
-VIDEOS={str(v['slot']):Path(v['path']) for v in json.loads(INPUTS.read_text(encoding='utf-8-sig'))}
-VIDEOS['4']=Path(r'C:\Users\User\OneDrive\Videos\4K Video Downloader+\Vanity 6 - Nasty Girl (1982) • TopPop.mp4')
+INPUTS=Path(os.environ.get('SCATTER_VIDEO_INPUTS_JSON') or ROOT/'assets'/'video-inputs.json')
+VIDEOS={str(v['slot']):Path(v['path']) for v in json.loads(INPUTS.read_text(encoding='utf-8-sig'))} if INPUTS.is_file() else {}
 class Handler(SimpleHTTPRequestHandler):
  def __init__(self,*a,**kw):super().__init__(*a,directory=str(ROOT),**kw)
  def json_response(self,data,status=200):

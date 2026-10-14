@@ -22,7 +22,7 @@ from study_storage import SqliteArchive, SqliteStudies
 
 
 HERE = Path(__file__).resolve().parent
-BRIDGE_KIT = HERE.parent / "documentation" / "toolkits" / "Gemini_Antigravity_App_Bridge_Kit"
+BRIDGE_KIT = HERE.parent.parent / "ui_prototypes" / "cinematic_graph" / "bridge_kits"
 PROJECT_CONFIG = HERE / "gemini-project.json"
 MODELS = ("flash_lite", "flash", "pro")
 

@@ -10,7 +10,7 @@ inside browser OPFS.
 | Layer | Authority | Rule |
 | --- | --- | --- |
 | RedNote capture and media | `rednote-v2.sqlite` and verified media bytes | Captured source is read only to Scatter. Keep/Ignore is resolved from the mirror selection and graph-local exclusions. |
-| Authored graph | `D:/0/Noir Fiction Engine/Scatter_Engine/graph.py` on port 5189 | Commands use `expected_revision` and immutable revision receipts. Source references remain pinned. |
+| Authored graph | Packaged `engines/scatter_graph/graph.py` on port 5189; `SCATTER_DATA_DIR` points at the existing SQLite store | Commands use `expected_revision` and immutable revision receipts. Source references remain pinned. |
 | Research studies | Headless Red Engine on port 5188 | Research questions, citations, and review do not edit the mirror or graph implicitly. |
 | Board rendering | Browser at port 5186 | Positions, hit targets, and visible cards are a projection of the authored graph. Rendering caches are disposable. |
 | Story runs and documents | Revisioned Scatter execution and documents | Model dispatch is explicit; model text is a proposal until a person accepts it. |
@@ -22,6 +22,15 @@ selections, or graph revisions. The existing Argon
 not the active board renderer and not a measured 50,000-node product path.
 
 ## Implemented in this branch
+
+The complete headless Scatter service source is now included under
+`engines/scatter_graph`. `Start-ScatterV3.ps1` accepts explicit paths for the
+existing graph, mirror, study, and index stores. The service reads the same
+source databases via `engines/headless_research` and does not copy the capture
+archive into the repository. API health and timing events are written to a
+content-free JSONL log in the selected graph data directory. Story queue and
+worker stage transitions record counts, durations, and status, with no prompt
+or source text in that telemetry.
 
 The cinematic graph loads `scatter-spatial-core.js` and
 `scatter-canvas-engine.js` after its custom node scripts. The spatial core

@@ -4,15 +4,19 @@ from __future__ import annotations
 
 import json
 import hashlib
+import os
 import sqlite3
 from contextlib import contextmanager
 from datetime import datetime, timezone
 from pathlib import Path
 
 
-MIRROR_DB = Path(__file__).resolve().parent.parent / "Red Note Gemini" / "data_v2" / "rednote-v2.sqlite"
-STUDY_DB = Path(__file__).resolve().parent / "data" / "studies.sqlite"
-INDEX_DB = Path(__file__).resolve().parent / "data" / "source-index.sqlite"
+MIRROR_DB = Path(os.environ.get("REDNOTE_MIRROR_DB") or
+                 Path(__file__).resolve().parent.parent / "Red Note Gemini" / "data_v2" / "rednote-v2.sqlite")
+STUDY_DB = Path(os.environ.get("REDNOTE_STUDY_DB") or
+                Path(__file__).resolve().parent / "data" / "studies.sqlite")
+INDEX_DB = Path(os.environ.get("REDNOTE_INDEX_DB") or
+                Path(__file__).resolve().parent / "data" / "source-index.sqlite")
 
 
 def decode_json(value: str | None) -> dict:

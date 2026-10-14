@@ -33,6 +33,8 @@
   let lastVisible = 0;
   let lastEdges = 0;
   let lastPaintMs = 0;
+  let paintedFrames = 0;
+  const paintSamples = [];
   let needsSpatialSync = false;
   let overviewClusters = [];
   wires.replaceChildren();
@@ -317,6 +319,9 @@
     lastVisible = visibleIds.length;
     lastEdges = visibleEdges.size;
     lastPaintMs = performance.now() - started;
+    paintedFrames++;
+    paintSamples.push(lastPaintMs);
+    if (paintSamples.length > 240) paintSamples.shift();
     if (flowPreview && scale >= 0.25 && !document.hidden) requestPaint(false);
   }
 
@@ -401,7 +406,16 @@
       requestPaint();
     },
     metrics() { return { visibleNodes: lastVisible, visibleEdges: lastEdges,
-      mountedCards: materialized.size, paintMs: lastPaintMs }; }
+      mountedCards: materialized.size, cardBudget: domCardBudget,
+      totalNodes: nodeById.size, totalEdges: renderedEdges.length,
+      zoom: scale, paintedFrames, paintMs: lastPaintMs,
+      paintP50Ms: percentile(paintSamples, 0.5), paintP95Ms: percentile(paintSamples, 0.95),
+      jsHeapBytes: performance.memory?.usedJSHeapSize ?? null }; }
   };
+  function percentile(values, fraction) {
+    if (!values.length) return null;
+    const sorted = [...values].sort((a, b) => a - b);
+    return Math.round(sorted[Math.min(sorted.length - 1, Math.ceil(sorted.length * fraction) - 1)] * 100) / 100;
+  }
   if (typeof nodes !== 'undefined' && nodes) window.scatterCanvasEngine.invalidate();
 })();
