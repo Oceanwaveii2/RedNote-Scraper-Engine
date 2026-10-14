@@ -28,9 +28,9 @@ The cinematic graph loads `scatter-spatial-core.js` and
 incrementally indexes variable-size node bounds. The renderer queries the
 viewport, draws the relevant wires in one Canvas 2D frame, and retains only
 visible SVG connection hit targets. It coalesces pan, zoom, and drag changes in
-`requestAnimationFrame`. On boards over 200 nodes, the renderer mounts a bounded
-set of nearby custom HTML cards and represents the rest with selectable canvas
-proxies or low-zoom clusters. The current small board keeps every custom card;
+`requestAnimationFrame`. On boards over 12 nodes, the renderer mounts up to 32
+nearby custom HTML cards and represents the rest with selectable canvas proxies
+or low-zoom clusters. Visible cards retain their custom designs;
 `content-visibility` lets the browser skip work for offscreen interiors.
 The wire projection preserves the existing scene-mode routes and folds hidden
 post endpoints into their visible profile/output cards. Connection editing still

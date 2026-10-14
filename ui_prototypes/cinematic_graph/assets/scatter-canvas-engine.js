@@ -25,7 +25,7 @@
   const materialized = new Set();
   let desiredCards = new Set();
   let virtualizeCards = false;
-  const domCardBudget = 128;
+  const domCardBudget = 32;
   let edgeAdjacency = new Map();
   let indexedEdges = null;
   let renderedEdges = [];
@@ -330,7 +330,7 @@
       nodeById.clear();
       for (const node of nodes) nodeById.set(node.id, node);
     }
-    virtualizeCards = Boolean(nodes && nodes.length > 200);
+    virtualizeCards = Boolean(nodes && nodes.length > 12);
     desiredCards = chooseCards(viewport.clientWidth, viewport.clientHeight);
     materialized.clear();
     priorMount();
