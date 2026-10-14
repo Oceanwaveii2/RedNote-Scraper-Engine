@@ -39,7 +39,10 @@ or appear as duplicate overview proxies.
 
 The mirror adapter now walks every included captured post for every profile in
 a group. It no longer silently stops at 60 posts or hydrates only the last
-profile. Each story node carries its source ID, URL, and capture coverage. Its
+profile. Post rows are fetched in bounded batches, and each batch uses one
+comment query instead of one query per post. The compiled board still
+materializes every included post, so this is not the final large-profile
+context format. Each story node carries its source ID, URL, and capture coverage. Its
 comment text remains an explicitly bounded sample of up to ten root comments,
 with up to five included in story observations. A complete comment analysis
 must query the mirror or research broker separately.

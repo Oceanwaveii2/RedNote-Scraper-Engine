@@ -1587,6 +1587,31 @@ class MirrorCloneAdapter:
         self.sqlite_path = Path(sqlite_path).resolve() if sqlite_path else None
         self.mirror_http_base = mirror_http_base.rstrip("/")
 
+    @staticmethod
+    def _root_comment_samples(conn: sqlite3.Connection, post_ids: List[str]) -> Dict[str, List[str]]:
+        """Read a bounded root-comment sample for a batch of posts in one query."""
+        if not post_ids:
+            return {}
+        placeholders = ",".join("?" for _ in post_ids)
+        rows = conn.execute(
+            "SELECT post_id, author, body FROM comments "
+            f"WHERE post_id IN ({placeholders}) "
+            "AND (parent_source_id IS NULL OR parent_source_id = '') "
+            "ORDER BY post_id, ordinal, id",
+            post_ids,
+        )
+        samples: Dict[str, List[str]] = {post_id: [] for post_id in post_ids}
+        seen: Dict[str, int] = {post_id: 0 for post_id in post_ids}
+        for row in rows:
+            post_id = row["post_id"]
+            if seen[post_id] >= 10:
+                continue
+            seen[post_id] += 1
+            sample = samples[post_id]
+            if len(sample) < 5 and row["body"]:
+                sample.append(f"{row['author']}: {row['body']}")
+        return samples
+
     def hydrate_board_from_mirror_sqlite(self, board: Dict[str, Any]) -> Dict[str, Any]:
         """Enriches any `mirror_ref` or `mirror_group_ref` nodes on the Scatter board
         with captured post references and sampled root comments from
@@ -1654,24 +1679,18 @@ class MirrorCloneAdapter:
                         "FROM posts WHERE profile_id = ? ORDER BY ordinal ASC, id ASC",
                         (profile_id,),
                     )
-                    for prow in post_rows:
-                        post_id = str(prow["id"])
-                        if post_id in excluded_ids:
-                            continue
-                        if post_id not in member_ids:
-                            node["memberIds"].append(post_id)
-                            member_ids.add(post_id)
-
-                        if post_id not in existing_ids:
-                            c_rows = conn.execute(
-                                "SELECT id, author, body, likes FROM comments "
-                                "WHERE post_id = ? AND (parent_source_id IS NULL OR parent_source_id = '') "
-                                "ORDER BY ordinal ASC LIMIT 10",
-                                (post_id,),
-                            ).fetchall()
-                            comments_summary = [
-                                f"{crow['author']}: {crow['body']}" for crow in c_rows if crow["body"]
-                            ]
+                    while batch := post_rows.fetchmany(128):
+                        included = [prow for prow in batch if str(prow["id"]) not in excluded_ids]
+                        new_ids = [str(prow["id"]) for prow in included
+                                   if str(prow["id"]) not in existing_ids]
+                        comments = self._root_comment_samples(conn, new_ids)
+                        for prow in included:
+                            post_id = str(prow["id"])
+                            if post_id not in member_ids:
+                                node["memberIds"].append(post_id)
+                                member_ids.add(post_id)
+                            if post_id in existing_ids:
+                                continue
                             local_ovr = post_overrides.get(post_id) or {}
                             synth_node = {
                                 "id": post_id,
@@ -1681,7 +1700,7 @@ class MirrorCloneAdapter:
                                 "groupedIn": node["id"],
                                 "story": {
                                     "status": "mirror_cloned",
-                                    "observations": comments_summary[:5],
+                                    "observations": comments.get(post_id, []),
                                     "commentary": prow["body"] or "",
                                     "source_url": prow["source_url"],
                                     "source_id": prow["source_id"],
