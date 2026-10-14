@@ -1,7 +1,8 @@
 # Argon review handoff — Scatter engine replacement
 
 Date: 2026-10-14. Review the `codex/scatter-v3-engine` branch and draft PR #1
-in `Oceanwaveii2/RedNote-Scraper-Engine`. This branch is a replacement candidate;
+in `Oceanwaveii2/RedNote-Scraper-Engine`. **This is an engine and UI prototype,
+not a complete product or a full-profile analysis result.** This branch is a replacement candidate;
 the old Scatter files on `main` must remain until the replacement reaches its
 integration and performance gates. Git history is the rollback path.
 
@@ -33,11 +34,13 @@ explicit Python, data, mirror, study, and index paths. It starts only the
 graph API on `127.0.0.1:5189`. Health is
 `GET http://127.0.0.1:5189/api/scatter/v1/health`. Starting the separate
 `engines/scatter_graph/story_cli.py worker --loop` can contact Codex or Gemini,
-so do that only for an explicitly authorized provider run. The board preview
-is `python ui_prototypes/cinematic_graph/server.py` on port 5186; Mirror
-Storage on port 5185 and Red Engine on 5188 are separate services. Set
-`SCATTER_VIDEO_INPUTS_JSON` to a local JSON manifest of `{slot,path}` entries
-if the preview needs private video files; no personal path is baked in.
+so do that only for an explicitly authorized provider run. Start the board
+preview with `./Start-ScatterBoard.ps1` on this workstation, or run
+`python ui_prototypes/cinematic_graph/server.py` with explicit
+`SCATTER_PRIVATE_ASSET_ROOT` and `SCATTER_VIDEO_INPUTS_JSON` elsewhere. It
+serves port 5186; Mirror Storage on 5185 and Red Engine on 5188 are separate.
+The script's private-media defaults are workstation-specific parameters.
+Override them on another machine. No private media bytes are committed.
 
 On another machine, point all four DB parameters at that machine's real stores.
 Do not use the workstation defaults from the script as a portable fixture.
@@ -59,6 +62,11 @@ not written. Source pins read the existing archive, study, and index stores.
 | Board preview | Port 5186 loaded in an isolated Playwright browser. At overview it reported 41 nodes and 24 edges, 29 visible proxies, 0 mounted full cards, 32-card budget. Focusing the Big Lip card reported 9 visible nodes, 15 visible edges, 8 mounted cards and 0.37 zoom. |
 | Render timing sample | At that focus point the small sample reported 1.9 ms paint p50, 111.8 ms p95, 10 painted frames. This is **not** a sustained benchmark; startup/mount work affected the tail. JS heap reported about 7 MB at the focus point. |
 | Offline dependency | The isolated board got 503 for `/mirror/api/v2/profiles` because port 5185 was offline. This check does not verify Mirror Cabinet live behavior. |
+| Offline regression suite | `python -m unittest discover -s tests -p test_scatter_engine_v3.py -v` passed 5/5: revision replay/conflict/restore, atomic edge rejection, Rainee fixture shape, reviewed binding plan, and queue/summary/cancel without provider. |
+| Packaged API integration | `test_scatter_packaged_integration.py` passed 2/2 against temporary SQLite backups of graph DBs and read-only archive/study/index stores. It checked historical project read, queue/summary/cancel, telemetry redaction, and origin rejection. No worker or provider ran. |
+| Browser and media pass | With a private asset root configured, board JS and one private image returned 200; a private MP4 and video slot 4 returned 206 for a byte range; path traversal returned 404. Fresh Playwright navigation returned zero console errors and warnings. Studio 5185 remained offline. |
+| Board-to-engine binding | Loading the historical project in the prototype UI worked. The wire plan reported **0 bound forward wires and 33 skipped unbound or reverse wires**. Current visual cards are not a complete authored graph. |
+| Narrow render sample | Focusing Big Lip with private assets available showed 41 total nodes, 24 edges, 8 mounted cards, 9 visible nodes, and 15 visible edges. A 13-frame paint sample showed 0.8 ms p50 and 13.5 ms p95. This is not a sustained pan/zoom/drag benchmark. |
 
 Local graph API telemetry is append-only JSONL under
 `$SCATTER_DATA_DIR/telemetry/scatter-events.jsonl`. It records build label,
@@ -72,6 +80,14 @@ label was the previous Git HEAD; do not use that label as proof of the new
 commit. Re-run from the pushed commit and capture a fresh health label.
 
 ## Argon review instructions
+
+Inspect both `engines/scatter_graph/` and `ui_prototypes/cinematic_graph/` in
+this branch. Use the board to see the existing custom card designs and Core,
+Big Lips, Horse layout. Saved mock cards are design fixtures, not captured
+evidence. The prior source-backed interpretation included one selected profile,
+two posts, and zero comment bodies; it did not analyze the whole profile. Record
+exact source scope and exclusions before interpreting results. Keep private
+media, local DBs, and model credentials outside Git.
 
 1. Check that every path in the packaged graph service resolves within this
    repo or through the explicit data environment variables. Inspect the
@@ -96,6 +112,9 @@ commit. Re-run from the pushed commit and capture a fresh health label.
 7. Review telemetry for accidental personal content and silent write failures.
    Add durable stage metrics where needed without logging prompt bodies,
    archive text, media bytes, credentials, or full source URLs.
+8. Check the offline Mirror Cabinet path and the board startup script on
+   Windows. Review drag/drop, custom cards, and source links in a live Studio
+   session separately; the offline 503 is not a successful Cabinet read.
 
 ## Release gate
 

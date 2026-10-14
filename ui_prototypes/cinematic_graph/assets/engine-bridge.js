@@ -5,9 +5,9 @@
   if (!sidebar) return;
   const section = document.createElement('section');
   section.style.cssText = 'margin:12px 0;padding:12px;border:1px solid #4a6474;border-radius:10px;background:#101821;color:#eaf3f6';
-  const title = document.createElement('b'); title.textContent = 'SCATTER ENGINE';
+  const title = document.createElement('b'); title.textContent = 'SCATTER PROTOTYPE BRIDGE';
   const note = document.createElement('p');
-  note.textContent = 'Attach a semantic project. The visual board is still a separate prototype.';
+  note.textContent = 'This board is a UI prototype. Linking a headless project does not process its mock cards or a whole captured profile.';
   const project = document.createElement('input');
   project.placeholder = 'Semantic project ID';
   project.setAttribute('aria-label', 'Scatter semantic project ID');
@@ -81,9 +81,9 @@
       const id = project.value.trim();
       const graph = await api('/graph?project_id=' + encodeURIComponent(id));
       localStorage.setItem('scatter-engine-project-id', id);
-      status.textContent = `Engine project ${id}, revision ${graph.revision}`;
+      status.textContent = `Headless project ${id}, revision ${graph.revision} loaded. Board mapping is partial.`;
       const privacy = sidebar.querySelector('.privacy');
-      if (privacy) privacy.textContent = 'Scatter engine connected · visual board mapping pending';
+      if (privacy) privacy.textContent = 'Headless project reachable · prototype board mapping partial';
       outputs.replaceChildren();
       runPanel.replaceChildren();
       let bindings = await api('/bindings?project_id=' + encodeURIComponent(id));

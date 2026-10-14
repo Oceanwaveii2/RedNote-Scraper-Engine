@@ -1,13 +1,14 @@
 """Loopback graph preview with a bounded read-only Mirror Storage bridge."""
 from http.server import SimpleHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
-import json,os,re,socket
+import json,mimetypes,os,re,socket
 from urllib.request import Request,urlopen
 from urllib.error import HTTPError,URLError
 from ui_bridge import bridge
 ROOT=Path(__file__).resolve().parent
 INPUTS=Path(os.environ.get('SCATTER_VIDEO_INPUTS_JSON') or ROOT/'assets'/'video-inputs.json')
 VIDEOS={str(v['slot']):Path(v['path']) for v in json.loads(INPUTS.read_text(encoding='utf-8-sig'))} if INPUTS.is_file() else {}
+PRIVATE_ASSETS=Path(os.environ['SCATTER_PRIVATE_ASSET_ROOT']).resolve() if os.environ.get('SCATTER_PRIVATE_ASSET_ROOT') else None
 class Handler(SimpleHTTPRequestHandler):
  def __init__(self,*a,**kw):super().__init__(*a,directory=str(ROOT),**kw)
  def json_response(self,data,status=200):
@@ -89,6 +90,37 @@ class Handler(SimpleHTTPRequestHandler):
       self.wfile.write(chunk);left-=len(chunk)
    except (BrokenPipeError,ConnectionResetError):pass
    return
+  if PRIVATE_ASSETS and route.startswith('/assets/'):
+   relative=route.removeprefix('/assets/')
+   if not re.fullmatch(r'[A-Za-z0-9._/-]+',relative) or '..' in Path(relative).parts:
+    self.send_error(404);return
+   path=(PRIVATE_ASSETS/relative).resolve()
+   if not path.is_relative_to(PRIVATE_ASSETS):
+    self.send_error(404);return
+   if (path.suffix.lower() in {'.png','.jpg','.jpeg','.webp','.gif','.mp4'}
+       and not (ROOT/'assets'/relative).is_file() and path.is_file()):
+    size=path.stat().st_size;start=0;end=size-1;partial=False
+    if self.headers.get('Range'):
+     m=re.fullmatch(r'bytes=(\d+)-(\d*)',self.headers['Range'])
+     if not m:self.send_error(416);return
+     start=int(m[1]);end=min(int(m[2]) if m[2] else end,end);partial=True
+     if start>end:self.send_error(416);return
+    self.send_response(206 if partial else 200)
+    self.send_header('Content-Type',mimetypes.guess_type(path.name)[0] or 'application/octet-stream')
+    self.send_header('Content-Length',str(end-start+1));self.send_header('Accept-Ranges','bytes')
+    self.send_header('Cache-Control','private, max-age=3600')
+    self.send_header('X-Content-Type-Options','nosniff')
+    if partial:self.send_header('Content-Range',f'bytes {start}-{end}/{size}')
+    self.end_headers()
+    try:
+     with path.open('rb') as source:
+      source.seek(start);remaining=end-start+1
+      while remaining:
+       chunk=source.read(min(remaining,1024*1024))
+       if not chunk:break
+       self.wfile.write(chunk);remaining-=len(chunk)
+    except (BrokenPipeError,ConnectionResetError):pass
+    return
   if route not in ('/','/index.html','/app.js','/app-pass2.js','/bridge-ui.js','/storage-ui.js','/board-ui.js','/style.css','/layout.json','/reference-review.html','/branch-ui.js','/cinematic-ui.js','/cinematic.css','/graph-navigation-ui.js','/graph-navigation-ui.css','/graph-jump-ui.js','/graph-jump-ui.css') and not route.startswith('/assets/'):
    self.send_error(404);return
   if '..' in route:self.send_error(404);return

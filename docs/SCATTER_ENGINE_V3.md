@@ -1,5 +1,11 @@
 # Scatter Engine v3: authority and rendering
 
+**Status: prototype.** The headless graph can revision, queue, summarize, and
+cancel against pinned source data. The cinematic board remains a UI prototype
+with partial card bindings. A linked project or rendered mock card does not
+mean a whole captured profile was processed. Review the exact selected profile,
+post, comment, and media counts in each frozen input packet.
+
 This is the implementation boundary for the new Scatter path discussed in the
 Gemini handoff. It keeps the RedNote capture system, the Mirror Clone, and the
 custom node designs. It does not make a second writable copy of captured data
@@ -41,6 +47,10 @@ visible SVG connection hit targets. It coalesces pan, zoom, and drag changes in
 nearby custom HTML cards and represents the rest with selectable canvas proxies
 or low-zoom clusters. Visible cards retain their custom designs;
 `content-visibility` lets the browser skip work for offscreen interiors.
+`Start-ScatterBoard.ps1` starts the preview with a private asset root and local
+video manifest. The board server serves these bytes only under `/assets/` and
+`/video/` with relative-path checks; neither the assets nor local DBs are part
+of this repository. Port 5185 Mirror Storage is a separate runtime dependency.
 The wire projection preserves the existing scene-mode routes and folds hidden
 post endpoints into their visible profile/output cards. Connection editing still
 targets the original authored edge. Hidden grouped posts do not take a card slot
