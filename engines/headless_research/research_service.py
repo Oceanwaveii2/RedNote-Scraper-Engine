@@ -20,6 +20,7 @@ from urllib.parse import parse_qs, urlsplit
 
 from study_core import StudyEngine
 from study_storage import SqliteArchive, SqliteStudies
+from scatter_pipeline_ext import pipeline_instance as SCATTER_PIPELINE, MirrorCloneAdapter
 
 
 HERE = Path(__file__).resolve().parent
@@ -258,6 +259,8 @@ class Handler(BaseHTTPRequestHandler):
     def do_GET(self) -> None:
         route = urlsplit(self.path)
         try:
+            if route.path == "/api/scatter/status":
+                return self.json_response(SCATTER_PIPELINE.router.get_session_status())
             if route.path == "/api/health":
                 return self.json_response({"service": "red-engine-research", "ui": False,
                                            "preset_database": PRESET_DB.is_file(),
@@ -338,7 +341,8 @@ class Handler(BaseHTTPRequestHandler):
         job_action = len(parts) == 4 and parts[:2] == ["api", "studies"] and parts[3] == "jobs"
         cancel_action = len(parts) == 6 and parts[:2] == ["api", "studies"] and parts[3] == "jobs" and parts[5] == "cancel"
         retry_action = len(parts) == 6 and parts[:2] == ["api", "studies"] and parts[3] == "jobs" and parts[5] == "retry"
-        if (self.path not in {"/api/presets", "/api/studies"} and not measurement_action and not marketing_action and not finding_action and not review_action and not context_action and not job_action and not cancel_action and not retry_action) or self.headers.get("X-Red-Engine-Action") != "explicit":
+        scatter_action = self.path in {"/api/scatter/compile", "/api/scatter/execute", "/api/scatter/export-docx"}
+        if (self.path not in {"/api/presets", "/api/studies"} and not scatter_action and not measurement_action and not marketing_action and not finding_action and not review_action and not context_action and not job_action and not cancel_action and not retry_action) or self.headers.get("X-Red-Engine-Action") != "explicit":
             return self.json_response({"error": "Action unavailable"}, 403)
         try:
             if cancel_action:
@@ -363,7 +367,7 @@ class Handler(BaseHTTPRequestHandler):
                     raise LookupError("Research preset not found")
                 return self.json_response(STUDY_ENGINE.measure_marketing(parts[2], preset["terms"], preset["id"]), 201)
             length = int(self.headers.get("Content-Length", "0"))
-            maximum = 131072 if self.path == "/api/studies" else 32768 if context_action or finding_action else 16384
+            maximum = 2097152 if scatter_action else 131072 if self.path == "/api/studies" else 32768 if context_action or finding_action else 16384
             if not 0 < length <= maximum:
                 raise ValueError("Request payload exceeds limit")
             payload = json.loads(self.rfile.read(length))
@@ -377,6 +381,37 @@ class Handler(BaseHTTPRequestHandler):
                 return self.json_response(STUDY_ENGINE.review_finding(parts[2], parts[4], payload))
             if job_action:
                 return self.json_response(STUDY_ENGINE.create_job(parts[2], payload), 201)
+            if scatter_action:
+                board = payload.get("board") or {}
+                if MIRROR_DB.is_file():
+                    board = MirrorCloneAdapter(sqlite_path=MIRROR_DB).hydrate_board_from_mirror_sqlite(board)
+                target_id = str(payload.get("target_node_id") or payload.get("targetNodeId") or "")
+                if self.path == "/api/scatter/compile":
+                    return self.json_response(SCATTER_PIPELINE.compile_chain(board, target_id))
+                if self.path == "/api/scatter/execute":
+                    return self.json_response(SCATTER_PIPELINE.execute_full_pipeline(
+                        board=board,
+                        target_node_id=target_id,
+                        routing_mode=str(payload.get("routing_mode") or payload.get("routingMode") or "gemini_then_grok"),
+                        style_guide_id=str(payload.get("style_guide_id") or payload.get("styleGuideId") or "noir_velvet_kinetic"),
+                        custom_prompt=str(payload.get("custom_prompt") or payload.get("customPrompt") or ""),
+                        title=payload.get("title"),
+                    ))
+                if self.path == "/api/scatter/export-docx":
+                    import base64
+                    docx_bytes = SCATTER_PIPELINE.export_run_docx(
+                        board=board,
+                        target_node_id=target_id,
+                        title=str(payload.get("title") or "Scatter Story Manuscript"),
+                        text=payload.get("text"),
+                        routing_mode=str(payload.get("routing_mode") or payload.get("routingMode") or "gemini_then_grok"),
+                        style_guide_id=str(payload.get("style_guide_id") or payload.get("styleGuideId") or "noir_velvet_kinetic"),
+                    )
+                    return self.json_response({
+                        "filename": "scatter-manuscript.docx",
+                        "bytes": len(docx_bytes),
+                        "base64": base64.b64encode(docx_bytes).decode("ascii"),
+                    })
             if self.path == "/api/studies":
                 return self.json_response(STUDY_ENGINE.create(payload), 201)
             self.json_response(save_custom_preset(payload), 201)

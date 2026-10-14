@@ -127,7 +127,46 @@ def main() -> None:
     cancel = commands.add_parser("research-cancel", help="Request cancellation of a running broker session")
     cancel.add_argument("session_id")
     commands.add_parser("research-recover", help="Mark sessions with expired worker heartbeats interrupted")
+    sc_compile = commands.add_parser("scatter-compile", help="Compile upstream 5-tier JSON overrides for a Scatter graph node")
+    sc_compile.add_argument("--board-file", required=True, help="Path to board layout.json")
+    sc_compile.add_argument("--target-node", required=True, help="Target output/LLM/Prose node ID")
+    sc_exec = commands.add_parser("scatter-execute", help="Run full Scatter pipeline (DAG Compile -> Grok+Gemini -> Prose Conditioner)")
+    sc_exec.add_argument("--board-file", required=True, help="Path to board layout.json")
+    sc_exec.add_argument("--target-node", required=True, help="Target output node ID")
+    sc_exec.add_argument("--routing-mode", default="gemini_then_grok")
+    sc_exec.add_argument("--style-guide", default="noir_velvet_kinetic")
+    sc_exec.add_argument("--docx-out", default="", help="Optional path to save .docx manuscript")
     args = parser.parse_args()
+    if args.command in {"scatter-compile", "scatter-execute"}:
+        from pathlib import Path
+        from scatter_pipeline_ext import pipeline_instance as scatter_pipe, MirrorCloneAdapter
+        from research_service import MIRROR_DB
+        board_data = json.loads(Path(args.board_file).read_text(encoding="utf-8"))
+        if MIRROR_DB.is_file():
+            board_data = MirrorCloneAdapter(sqlite_path=MIRROR_DB).hydrate_board_from_mirror_sqlite(board_data)
+        if args.command == "scatter-compile":
+            print(json.dumps(scatter_pipe.compile_chain(board_data, args.target_node), ensure_ascii=False, indent=2))
+            return
+        res = scatter_pipe.execute_full_pipeline(
+            board=board_data,
+            target_node_id=args.target_node,
+            routing_mode=args.routing_mode,
+            style_guide_id=args.style_guide,
+        )
+        if args.docx_out:
+            docx_bytes = scatter_pipe.export_run_docx(
+                board=board_data,
+                target_node_id=args.target_node,
+                title=res["title"],
+                text=res["final_text"],
+                routing_mode=args.routing_mode,
+                style_guide_id=args.style_guide,
+            )
+            Path(args.docx_out).write_bytes(docx_bytes)
+            res["docx_saved_to"] = args.docx_out
+            res["docx_bytes"] = len(docx_bytes)
+        print(json.dumps(res, ensure_ascii=False, indent=2))
+        return
     if args.command == "research-dispatch":
         from provider_codex import dispatch_research as codex_research
         from provider_gemini import dispatch_research as gemini_research
