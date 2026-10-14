@@ -17,11 +17,28 @@ class Handler(SimpleHTTPRequestHandler):
  def do_POST(self):
   if not self.allowed_host() or self.headers.get('Origin')!='http://127.0.0.1:5186' or self.headers.get('Content-Type','').split(';')[0]!='application/json':self.json_response({'error':'Same-origin JSON requests required'},403);return
   try:
-   size=int(self.headers.get('Content-Length','0'))
-   if not 0<size<=32768:raise ValueError('Request too large')
-   data=json.loads(self.rfile.read(size))
-   if not isinstance(data,dict):raise ValueError('Object required')
    route=self.path
+   size=int(self.headers.get('Content-Length','0'))
+   pipeline_routes={'/pipeline/compile':'compile','/pipeline/execute':'execute','/pipeline/export-docx':'export-docx'}
+   if not 0<size<=(2097152 if route in pipeline_routes else 32768):raise ValueError('Request too large')
+   raw=self.rfile.read(size)
+   data=json.loads(raw)
+   if not isinstance(data,dict):raise ValueError('Object required')
+   if route in pipeline_routes:
+    request=Request('http://127.0.0.1:5188/api/scatter/'+pipeline_routes[route],data=raw,
+                    headers={'Content-Type':'application/json','X-Red-Engine-Action':'explicit'},method='POST')
+    try:
+     with urlopen(request,timeout=300 if route=='/pipeline/execute' else 45) as upstream:
+      payload=upstream.read(4*1024*1024+1)
+      if len(payload)>4*1024*1024:raise ValueError('Pipeline response too large')
+      self.send_response(upstream.status);self.send_header('Content-Type','application/json');self.send_header('Cache-Control','no-store');self.send_header('Content-Length',str(len(payload)));self.end_headers();self.wfile.write(payload)
+    except HTTPError as exc:
+     try:detail=json.loads(exc.read(4096)).get('error','Scatter pipeline rejected the request')
+     except (ValueError,AttributeError):detail='Scatter pipeline rejected the request'
+     self.json_response({'error':str(detail),'status':exc.code},exc.code)
+    except (URLError,TimeoutError):
+     self.json_response({'error':'Headless Scatter pipeline is offline or timed out'},503)
+    return
    if route=='/bridge/connect':result=bridge.launch('connect',data)
    elif route=='/bridge/review':result=bridge.launch('review',data)
    elif route=='/bridge/chat':result=bridge.launch('chat',data)

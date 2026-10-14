@@ -1,5 +1,5 @@
 /* Pluggable 3-Node Story Execution Pipeline for Scatter Graph:
- * [LLM Node: Grok + Gemini 4.0 Embedded Session Bridge] -> [Prose Engine Conditioner Node] -> [Text / Word .docx Output Node]
+ * [connected story provider] -> [Prose Engine Conditioner] -> [Text / Word .docx Output]
  * Works anywhere on the graph: compiles upstream Protagonist, Branch Form, Profile Dossiers, Post Overrides,
  * Video Timecode JSON, and 4-Lane Music Steering.
  */
@@ -142,13 +142,13 @@
  }
 
  async function runChainIntoOutput(targetNode, statusEl = null) {
- if (statusEl) statusEl.textContent = 'Compiling upstream DAG & running Grok + Gemini 4.0 session → Prose Conditioner…';
- status('Running Scatter Story Pipeline: DAG Compile → Grok + Gemini 4.0 → Prose Conditioner…');
+ if (statusEl) statusEl.textContent = 'Compiling upstream graph and dispatching the selected story provider…';
+ status('Running Scatter Story Pipeline: DAG Compile → provider → Prose Conditioner…');
 
  const board = currentBoardPayload();
  const llmNode = board.nodes.find(n => n.story?.ui_template?.kind === 'llm-renderer') || targetNode;
  const proseNode = board.nodes.find(n => n.story?.ui_template?.kind === 'prose-engine') || targetNode;
- const routingMode = llmNode?.story?.renderer?.routing_mode || 'gemini_then_grok';
+ const routingMode = llmNode?.story?.renderer?.routing_mode || 'codex_direct';
  const styleGuideId = proseNode?.story?.prose_engine?.style_guide_id || 'noir_velvet_kinetic';
 
  try {
@@ -185,18 +185,9 @@
  status(`Story generated & conditioned (${result.prose_receipt?.metrics?.word_count || 0} words) · Ready for .docx export`);
  return result;
  } catch (err) {
- const compiled = compileUpstreamClient(targetNode.id);
- const fallbackText =
- `[${compiled.active_branch.title} · ${compiled.cultural_regime.regime_id}]\n\n` +
- `Generated via ${routingMode} session bridge and conditioned with ${styleGuideId}. ` +
- `Upstream chain resolved ${compiled.included_posts.length} post(s), ${compiled.video_segments.length} video window(s), ` +
- `and ${compiled.music_steering.active ? 'active 4-lane audio steering' : 'baseline narrative cadence'}.`;
- targetNode.story ??= {};
- targetNode.story.draft = fallbackText;
- targetNode.story.document_html = `<h1>${targetNode.title || 'Story Output'}</h1><p>${fallbackText.replace(/\n\n/g, '</p><p>')}</p>`;
- if (typeof persist === 'function') persist();
- if (typeof mount === 'function') mount();
- if (statusEl) statusEl.textContent = 'Generated via local fallback (start server.py for full Python .docx pipeline).';
+ const message = `Story run failed: ${err.message}. Existing draft preserved.`;
+ status(message);
+ if (statusEl) statusEl.textContent = message;
  return null;
  }
  }
@@ -205,12 +196,13 @@
  const board = currentBoardPayload();
  const llmNode = board.nodes.find(n => n.story?.ui_template?.kind === 'llm-renderer') || targetNode;
  const proseNode = board.nodes.find(n => n.story?.ui_template?.kind === 'prose-engine') || targetNode;
- const routingMode = llmNode?.story?.renderer?.routing_mode || 'gemini_then_grok';
+ const routingMode = llmNode?.story?.renderer?.routing_mode || 'codex_direct';
  const styleGuideId = proseNode?.story?.prose_engine?.style_guide_id || 'noir_velvet_kinetic';
  const title = targetNode.title || 'Scatter-Story-Manuscript';
  const text = targetNode.story?.draft || '';
 
  try {
+ if (!text.trim()) throw new Error('Generate or write a story draft before exporting.');
  status('Generating Microsoft Word (.docx) manuscript…');
  const result = await apiPipeline('/pipeline/export-docx', {
  board,
@@ -261,23 +253,23 @@
  id: llmId,
  uiCreated: true,
  kind: 'instruction',
- title: 'LLM Session Bridge · Grok + Gemini 4.0',
- subtitle: 'Embedded login sessions · NSFW & multi-card weave',
- instruction: 'Gemini 4.0 architects scene beats & continuity; Grok drafts unfiltered / NSFW / transformation prose.',
+ title: 'LLM Session Bridge',
+ subtitle: 'Choose a connected story renderer',
+ instruction: 'Codex direct is connected in the headless pipeline. Gemini and Grok story adapters are planned.',
  x,
  y,
  w: 540,
  h: 390,
  story: {
- status: 'session_connected',
+ status: 'provider_selection_required',
  draft: '',
- ui_template: { kind: 'llm-renderer', engine_status: 'connected' },
+ ui_template: { kind: 'llm-renderer', engine_status: 'codex_available_if_signed_in' },
  renderer: {
  session_role: 'story_render',
  auth_mode: 'embedded_login_session',
- providers: { grok: true, gemini: true, gpt: false },
- routing_mode: 'gemini_then_grok',
- active_provider: 'grok+gemini',
+ providers: { grok: false, gemini: false, gpt: true },
+ routing_mode: 'codex_direct',
+ active_provider: 'codex',
  },
  },
  actor: { fictional_actor_ref: null, additional_actors: [] },
@@ -342,7 +334,7 @@
  llmNode.story.branch_owner = parentId;
  if (typeof branchOwners !== 'undefined') (branchOwners[parentId] ??= []).push(llmNode.id);
  }
- connect(llmNode.id, proseNode.id, 'raw Grok + Gemini draft');
+ connect(llmNode.id, proseNode.id, 'provider draft');
  connect(proseNode.id, outputNode.id, 'conditioned manuscript');
 
  proseNode.story.branch_owner = llmNode.id;
@@ -358,7 +350,7 @@
  if (before && typeof recordBoardChange === 'function') recordBoardChange(before);
  if (typeof renderObjects === 'function') renderObjects();
  if (typeof select === 'function') select(outputNode.id);
- status('Pluggable 3-Node Pipeline created: [LLM (Grok + Gemini 4.0)] → [Prose Engine Conditioner] → [Word .docx Output]');
+ status('Pluggable 3-Node Pipeline created: [LLM renderer] → [Prose Engine] → [Word .docx Output]');
  return outputNode;
  };
 
@@ -378,22 +370,23 @@
  const panel = E('section', 'scatter-pipeline-panel llm-panel');
  const badges = E('div', 'scatter-pipeline-badges');
  badges.append(
- E('span', 'scatter-badge grok', '● Grok Session · NSFW / Unfiltered'),
- E('span', 'scatter-badge gemini', '● Gemini 4.0 Session · Architect & Weaver')
+ E('span', 'scatter-badge gemini', '● Codex direct · signed-in session'),
+ E('span', 'scatter-badge grok', '○ Gemini / Grok · adapters pending')
  );
  panel.append(badges);
 
  const routeSelect = E('select', 'scatter-pipeline-select');
  for (const [val, label] of [
- ['gemini_then_grok', 'Gemini 4.0 (Beat Plan) → Grok (Unfiltered / NSFW Draft)'],
+ ['codex_direct', 'Codex direct · connected story route'],
+ ['gemini_then_grok', 'Gemini → Grok · adapter pending'],
  ['grok_gemini_collaborative', 'Grok + Gemini 4.0 Collaborative Weave'],
  ['grok_direct', 'Grok Session Direct (Unfiltered Solo)'],
  ['gemini_direct', 'Gemini 4.0 Session Direct (Cohesion Solo)'],
  ]) {
  routeSelect.append(new Option(label, val));
  }
- node.story.renderer ??= { routing_mode: 'gemini_then_grok', providers: { grok: true, gemini: true } };
- routeSelect.value = node.story.renderer.routing_mode || 'gemini_then_grok';
+ node.story.renderer ??= { routing_mode: 'codex_direct', providers: { grok: false, gemini: false, gpt: true } };
+ routeSelect.value = node.story.renderer.routing_mode || 'codex_direct';
  routeSelect.onchange = () => {
  node.story.renderer.routing_mode = routeSelect.value;
  if (typeof persist === 'function') persist();
@@ -426,7 +419,7 @@
  const badges = E('div', 'scatter-pipeline-badges');
  badges.append(
  E('span', 'scatter-badge prose', '● Layer 1: 1–5 Books + Lyrics Style Guide'),
- E('span', 'scatter-badge gemini', '● Layer 2: ~50-Book Semantic Drive')
+ E('span', 'scatter-badge gemini', '● Layer 2: seed Semantic Drive exemplars')
  );
  panel.append(badges);
 

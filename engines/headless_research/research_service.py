@@ -392,7 +392,7 @@ class Handler(BaseHTTPRequestHandler):
                     return self.json_response(SCATTER_PIPELINE.execute_full_pipeline(
                         board=board,
                         target_node_id=target_id,
-                        routing_mode=str(payload.get("routing_mode") or payload.get("routingMode") or "gemini_then_grok"),
+                        routing_mode=str(payload.get("routing_mode") or payload.get("routingMode") or "codex_direct"),
                         style_guide_id=str(payload.get("style_guide_id") or payload.get("styleGuideId") or "noir_velvet_kinetic"),
                         custom_prompt=str(payload.get("custom_prompt") or payload.get("customPrompt") or ""),
                         title=payload.get("title"),
@@ -404,7 +404,7 @@ class Handler(BaseHTTPRequestHandler):
                         target_node_id=target_id,
                         title=str(payload.get("title") or "Scatter Story Manuscript"),
                         text=payload.get("text"),
-                        routing_mode=str(payload.get("routing_mode") or payload.get("routingMode") or "gemini_then_grok"),
+                        routing_mode=str(payload.get("routing_mode") or payload.get("routingMode") or "codex_direct"),
                         style_guide_id=str(payload.get("style_guide_id") or payload.get("styleGuideId") or "noir_velvet_kinetic"),
                     )
                     return self.json_response({
@@ -419,6 +419,8 @@ class Handler(BaseHTTPRequestHandler):
             self.json_response({"error": str(exc)}, 400)
         except LookupError as exc:
             self.json_response({"error": str(exc)}, 404)
+        except RuntimeError as exc:
+            self.json_response({"error": str(exc)}, 503)
         except (OSError, sqlite3.Error) as exc:
             self.json_response({"error": str(exc)}, 503)
 

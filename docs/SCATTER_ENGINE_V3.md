@@ -1,0 +1,61 @@
+# Scatter Engine v3: authority and rendering
+
+This is the implementation boundary for the new Scatter path discussed in the
+Gemini handoff. It keeps the RedNote capture system, the Mirror Clone, and the
+custom node designs. It does not make a second writable copy of captured data
+inside browser OPFS.
+
+## Ownership
+
+| Layer | Authority | Rule |
+| --- | --- | --- |
+| RedNote capture and media | `rednote-v2.sqlite` and verified media bytes | Captured source is read only to Scatter. Keep/Ignore is resolved from the mirror selection and graph-local exclusions. |
+| Authored graph | `D:/0/Noir Fiction Engine/Scatter_Engine/graph.py` on port 5189 | Commands use `expected_revision` and immutable revision receipts. Source references remain pinned. |
+| Research studies | Headless Red Engine on port 5188 | Research questions, citations, and review do not edit the mirror or graph implicitly. |
+| Board rendering | Browser at port 5186 | Positions, hit targets, and visible cards are a projection of the authored graph. Rendering caches are disposable. |
+| Story runs and documents | Revisioned Scatter execution and documents | Model dispatch is explicit; model text is a proposal until a person accepts it. |
+
+The five-table SQLite WASM/OPFS design in the handoff is useful as a disposable
+read cache, but it must not become a second authority for profiles, source
+selections, or graph revisions. The existing Argon
+`engines/headless_research/spatial_engine_v2_ext.ts` is a standalone prototype,
+not the active board renderer and not a measured 50,000-node product path.
+
+## Implemented in this branch
+
+The cinematic graph loads `scatter-spatial-core.js` and
+`scatter-canvas-engine.js` after its custom node scripts. The spatial core
+incrementally indexes variable-size node bounds. The renderer queries the
+viewport, draws the relevant wires in one Canvas 2D frame, and retains only
+visible SVG connection hit targets. It coalesces pan, zoom, and drag changes in
+`requestAnimationFrame`. Custom HTML cards and their editors are unchanged;
+`content-visibility` lets the browser skip work for offscreen interiors.
+
+The mirror adapter now walks every included captured post for every profile in
+a group. It no longer silently stops at 60 posts or hydrates only the last
+profile. Each story node carries its source ID, URL, and capture coverage. Its
+comment text remains an explicitly bounded sample of up to ten root comments,
+with up to five included in story observations. A complete comment analysis
+must query the mirror or research broker separately.
+
+`codex_direct` uses the installed, signed-in Codex app-server with tools
+disabled for the story rendering turn. The resulting receipt records model,
+thread, and turn IDs. Grok and Gemini routes now fail explicitly until real
+story adapters exist; no locally constructed draft may be labeled as their
+output. Export of user-supplied text has an empty provider list.
+
+## Next integration boundaries
+
+1. Bind every visual card and connection to the revisioned graph service. Keep
+   coordinates in a board layout projection, not in Mirror Storage. Resolve
+   source pointers through the mirror adapter at a pinned source revision.
+2. Replace whole-board JSON requests with revision IDs plus bounded source
+   streaming. Compile branch context deterministically before provider work.
+3. Add separately accountable Gemini and Grok story adapters with availability
+   probes, cancellation, receipts, restart recovery, and no assumed login.
+4. Add low-zoom card impostors and a typed DOM pool only after preserving the
+   existing Protagonist, Branch, Profile, Video, Music, LLM, Prose, and document
+   designs. Measure frame time and memory before choosing WebGPU/PixiJS.
+
+No 50,000-node frame-rate or live Grok/Gemini claim follows from the code in
+this branch. Those require integrated runtime measurements and real sessions.
