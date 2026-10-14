@@ -32,6 +32,10 @@ visible SVG connection hit targets. It coalesces pan, zoom, and drag changes in
 set of nearby custom HTML cards and represents the rest with selectable canvas
 proxies or low-zoom clusters. The current small board keeps every custom card;
 `content-visibility` lets the browser skip work for offscreen interiors.
+The wire projection preserves the existing scene-mode routes and folds hidden
+post endpoints into their visible profile/output cards. Connection editing still
+targets the original authored edge. Hidden grouped posts do not take a card slot
+or appear as duplicate overview proxies.
 
 The mirror adapter now walks every included captured post for every profile in
 a group. It no longer silently stops at 60 posts or hydrates only the last
@@ -39,6 +43,8 @@ profile. Each story node carries its source ID, URL, and capture coverage. Its
 comment text remains an explicitly bounded sample of up to ten root comments,
 with up to five included in story observations. A complete comment analysis
 must query the mirror or research broker separately.
+Current Ignore selections also remove previously saved post members from the
+compiled profile and are carried into the compilation's exclusion ledger.
 
 `codex_direct` uses the installed, signed-in Codex app-server with tools
 disabled for the story rendering turn. The resulting receipt records model,

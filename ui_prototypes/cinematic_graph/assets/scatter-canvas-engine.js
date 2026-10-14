@@ -28,6 +28,7 @@
   const domCardBudget = 128;
   let edgeAdjacency = new Map();
   let indexedEdges = null;
+  let renderedEdges = [];
   let frame = 0;
   let lastVisible = 0;
   let lastEdges = 0;
@@ -40,7 +41,38 @@
     if (!layout?.edges) return;
     indexedEdges = layout.edges;
     edgeAdjacency = new Map();
-    layout.edges.forEach((edge, index) => {
+    const source = scene ? [
+      ['actor', 'main', 'actor / alternative form'],
+      ['tori', 'main', 'video reference'],
+      ['main', 'main-output', 'text output'],
+      ['main-output', 'junction', 'story fork'],
+      ['junction', 'adela', 'video branch'],
+      ['main', 'lip1', 'via photo profile'],
+      ['junction', 'lip2', 'via animation profile'],
+      ['junction', 'lip3', 'via animation profile'],
+      ['lip3', 'vanity', 'after object 03'],
+      ['vanity', 'junction', 'reference contribution']
+    ] : layout.edges;
+    const seen = new Set();
+    renderedEdges = [];
+    for (const original of source) {
+      const endpoint = id => {
+        const node = nodeById.get(id);
+        if (!node?.groupedIn) return id;
+        const owner = nodeById.get(node.groupedIn);
+        if (!owner) return id;
+        return node.kind === 'output' ? (groupedOutput(owner)?.id || owner.id) : owner.id;
+      };
+      const from = endpoint(original[0]);
+      const to = endpoint(original[1]);
+      if (from === to || !nodeById.has(from) || !nodeById.has(to)) continue;
+      if (scene && (!sceneLayout[from] || !sceneLayout[to])) continue;
+      const key = `${from}>${to}`;
+      if (seen.has(key)) continue;
+      seen.add(key);
+      renderedEdges.push({ edge: [from, to, original[2], original[3]], original });
+    }
+    renderedEdges.forEach(({ edge }, index) => {
       for (const id of [edge[0], edge[1]]) {
         let adjacency = edgeAdjacency.get(id);
         if (!adjacency) edgeAdjacency.set(id, adjacency = new Set());
@@ -81,13 +113,14 @@
     if (!virtualizeCards) return new Set(nodeById.keys());
     const wanted = new Set();
     if (scale < 0.25) {
-      if (active && nodeById.has(active)) wanted.add(active);
+      if (active && nodeById.has(active) && !nodeById.get(active).groupedIn) wanted.add(active);
       return wanted;
     }
     const centerX = (width / 2 - pan.x) / scale;
     const centerY = (height / 2 - pan.y) / scale;
     const candidates = spatial.query(-pan.x / scale, -pan.y / scale,
-      width / scale, height / scale, 180 / scale);
+      width / scale, height / scale, 180 / scale)
+      .filter(id => !nodeById.get(id)?.groupedIn && (!scene || sceneLayout[id]));
     candidates.sort((leftId, rightId) => {
       const a = nodeById.get(leftId), b = nodeById.get(rightId);
       const ad = Math.hypot(a.x + a.w / 2 - centerX, a.y + a.h / 2 - centerY);
@@ -95,7 +128,7 @@
       return ad - bd;
     });
     for (const id of candidates.slice(0, domCardBudget)) wanted.add(id);
-    if (active && nodeById.has(active)) wanted.add(active);
+    if (active && nodeById.has(active) && !nodeById.get(active).groupedIn) wanted.add(active);
     return wanted;
   }
 
@@ -123,7 +156,8 @@
   function paintOverview(visibleIds) {
     overviewClusters = [];
     if (!virtualizeCards) return;
-    const proxyIds = visibleIds.filter(id => !materialized.has(id));
+    const proxyIds = visibleIds.filter(id => !materialized.has(id) &&
+      !nodeById.get(id)?.groupedIn && (!scene || sceneLayout[id]));
     if (proxyIds.length > 2000 || scale < 0.25) {
       const screenCell = 130 / scale;
       const clusters = new Map();
@@ -200,9 +234,9 @@
       hit.setAttribute('class', 'wire-hit');
       hit.setAttribute('tabindex', '0');
       hit.setAttribute('role', 'button');
-      hit.addEventListener('click', () => openConnection(layout.edges[index]));
+      hit.addEventListener('click', () => openConnection(renderedEdges[index]?.original));
       hit.addEventListener('keydown', event => {
-        if (event.key === 'Enter') { event.preventDefault(); openConnection(layout.edges[index]); }
+        if (event.key === 'Enter') { event.preventDefault(); openConnection(renderedEdges[index]?.original); }
       });
       wires.append(hit);
       hitPaths.set(index, hit);
@@ -226,7 +260,8 @@
     const y = -pan.y / scale;
     const worldWidth = width / scale;
     const worldHeight = height / scale;
-    const visibleIds = spatial.query(x, y, worldWidth, worldHeight, 450 / scale);
+    const visibleIds = spatial.query(x, y, worldWidth, worldHeight, 450 / scale)
+      .filter(id => !nodeById.get(id)?.groupedIn && (!scene || sceneLayout[id]));
     const visibleEdges = new Set();
     if (scale >= 0.25) {
       for (const id of visibleIds) {
@@ -248,8 +283,9 @@
     if (editBends) wires.querySelectorAll('.wire-bend-handle').forEach(handle => handle.remove());
 
     for (const index of visibleEdges) {
-      const edge = layout.edges[index];
-      if (!edge) continue;
+      const projection = renderedEdges[index];
+      if (!projection) continue;
+      const { edge, original } = projection;
       const fromNode = nodeById.get(edge[0]);
       const toNode = nodeById.get(edge[1]);
       if (!fromNode || !toNode) continue;
@@ -269,7 +305,7 @@
       if (direction !== 'forward') arrow(geometry.from, geometry.to, color);
       const hit = updateHit(index, edge, geometry.d);
       usedHits.add(index);
-      if (editBends) addWireController(wires, hit, edge, geometry.down);
+      if (editBends) addWireController(wires, hit, original, geometry.down);
     }
     for (const [index, hit] of hitPaths) {
       if (usedHits.has(index)) continue;
@@ -342,7 +378,8 @@
       requestPaint();
       return;
     }
-    const candidates = spatial.query(wx - 5 / scale, wy - 5 / scale, 10 / scale, 10 / scale);
+    const candidates = spatial.query(wx - 5 / scale, wy - 5 / scale, 10 / scale, 10 / scale)
+      .filter(id => !nodeById.get(id)?.groupedIn && (!scene || sceneLayout[id]));
     if (!candidates.length) return;
     event.preventDefault();
     event.stopImmediatePropagation();

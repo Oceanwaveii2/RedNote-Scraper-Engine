@@ -1637,7 +1637,16 @@ class MirrorCloneAdapter:
                     except sqlite3.Error:
                         pass
 
-                node.setdefault("memberIds", [])
+                # Saved board membership can predate a Keep/Ignore change. The
+                # current mirror selection wins for this compilation, including
+                # posts that were already present in the board JSON.
+                node["memberIds"] = [str(mid) for mid in (node.get("memberIds") or [])
+                                     if str(mid) not in excluded_ids]
+                story["mirror_ref"] = {
+                    **(mirror_ref if isinstance(mirror_ref, dict) else {}),
+                    "excluded_post_ids": sorted(excluded_ids),
+                }
+                node["story"] = story
                 member_ids = set(node["memberIds"])
                 for profile_id in profile_ids:
                     post_rows = conn.execute(
