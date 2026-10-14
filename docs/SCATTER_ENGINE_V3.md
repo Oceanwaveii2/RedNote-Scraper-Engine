@@ -36,6 +36,12 @@ The wire projection preserves the existing scene-mode routes and folds hidden
 post endpoints into their visible profile/output cards. Connection editing still
 targets the original authored edge. Hidden grouped posts do not take a card slot
 or appear as duplicate overview proxies.
+The board also loads `scatter-edge-link.js`: after a user binds visual cards to
+semantic nodes, it maps forward board wires to typed ports, asks the graph
+service for an add/remove plan, and applies that plan only on a separate click
+with the expected graph revision and binding hash. Unbound or reverse board
+wires stay visual; the plan reports how many were skipped. A wire's stable ID
+comes from its endpoint IDs, not its current coordinates or label.
 
 The mirror adapter now walks every included captured post for every profile in
 a group. It no longer silently stops at 60 posts or hydrates only the last
@@ -60,9 +66,10 @@ card integration is revised. No visual story button is claimed operational.
 
 ## Next integration boundaries
 
-1. Bind every visual card and connection to the revisioned graph service. Keep
-   coordinates in a board layout projection, not in Mirror Storage. Resolve
-   source pointers through the mirror adapter at a pinned source revision.
+1. Complete card-to-graph mapping and source pinning so every authored visual
+   node can be represented in the revisioned graph. Keep coordinates in the
+   board layout projection, not in Mirror Storage. The current mapping is
+   explicit and partial; it does not auto-import mock cards.
 2. Replace whole-board JSON requests with revision IDs plus bounded source
    streaming. Compile branch context deterministically before provider work.
 3. Add separately accountable Gemini and Grok story adapters with availability

@@ -291,7 +291,9 @@
       if (!fromNode || !toNode) continue;
       const geometry = pathFor(edge, fromNode, toNode);
       const music = String(edge[3]?.signal || '').startsWith('music');
-      const color = music ? '#26b4ff' : '#ff496a';
+      const duduProfile = [fromNode, toNode].some(node =>
+        node.story?.ui_template?.kind?.startsWith('dudu-'));
+      const color = music ? '#26b4ff' : duduProfile ? '#3bbcff' : '#ff496a';
       const path = new Path2D(geometry.d);
       context.strokeStyle = color;
       context.globalAlpha = edge[3]?.active === false ? 0.3 : 0.85;
