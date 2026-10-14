@@ -1,10 +1,14 @@
 # Scatter Engine v3 — communication brief
 
-**Date:** October 14, 2026  
-**Status:** Engine and UI prototype. It needs more integration, source coverage, provider verification, and performance work.  
-**Repository:** [Oceanwaveii2/RedNote-Scraper-Engine](https://github.com/Oceanwaveii2/RedNote-Scraper-Engine)  
-**Review branch:** [`codex/scatter-v3-engine`](https://github.com/Oceanwaveii2/RedNote-Scraper-Engine/tree/codex/scatter-v3-engine)  
-**Draft PR:** [#1 — Start Scatter Engine v3 replacement path](https://github.com/Oceanwaveii2/RedNote-Scraper-Engine/pull/1)  
+**Date:** October 14, 2026
+
+**Status:** Engine and UI prototype. It needs more integration, source coverage, provider verification, and performance work.
+
+**Repository:** [Oceanwaveii2/RedNote-Scraper-Engine](https://github.com/Oceanwaveii2/RedNote-Scraper-Engine)
+
+**Review branch:** [`codex/scatter-v3-engine`](https://github.com/Oceanwaveii2/RedNote-Scraper-Engine/tree/codex/scatter-v3-engine)
+
+**Draft PR:** [#1 — Start Scatter Engine v3 replacement path](https://github.com/Oceanwaveii2/RedNote-Scraper-Engine/pull/1)
 **Verified code baseline:** `2d35b2aac28da285020beda5d037e51671d54237` (the later document-only commit does not change this baseline)
 
 This document is the starting point for the next AI or human reviewer. Read the code and [technical handoff](ARGON_SCATTER_V3_HANDOFF_2026-10-14.md) before changing it. The board is included in the review branch under [`ui_prototypes/cinematic_graph/`](../ui_prototypes/cinematic_graph/). Do not infer that a visual card, a linked project, or a queued run has processed all its source data.
