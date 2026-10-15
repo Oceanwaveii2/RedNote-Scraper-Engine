@@ -22,7 +22,7 @@
   const savedProfile = node => node.story?.mirror_ref;
   const persistedCustom = 'scatter-custom-assets-v1';
   const suppliedLibrary=fetch('assets/custom-library.json',{cache:'no-store'}).then(response=>{if(!response.ok)throw Error('Custom library unavailable');return response.json();}).then(data=>data.items||[]);
-  let profiles = [], profilesLoaded = false, studioGroups = [], activeProfile = null, activeProfileNodeId = null, pageAfter = -1, pageNext = null, pendingSearch = '', activeTab = 'groups', postRequest = 0;
+  let profiles = [], profilesLoaded = false, studioBridgeLoaded = false, studioGroups = [], activeProfile = null, activeProfileNodeId = null, pageAfter = -1, pageNext = null, pendingSearch = '', activeTab = 'groups', postRequest = 0;
 
   const dock = E('section','mirror-graph-dock');
   dock.innerHTML = '<div class="mirror-cabinet-head"><div class="mirror-brand"><span class="mirror-brand-mark">小红书</span><div><b>Mirror Cabinet</b><small>Captured RedNote · drag to the graph</small></div></div><button type="button" class="mirror-cabinet-close" aria-label="Close Cabinet">✕</button></div><label class="mirror-cabinet-search">⌕ <input type="search" placeholder="Search groups and captured profiles" aria-label="Search Mirror Cabinet"></label><div class="mirror-graph-tabs"><button type="button" data-store="groups">Groups</button><button type="button" data-store="mirror">Profiles</button><button type="button" data-store="custom">Custom media</button></div><p class="mirror-graph-state" role="status">Loading archive…</p><div class="mirror-graph-list"></div><input class="mirror-custom-input" type="file" accept="image/*,video/*,audio/*" multiple hidden>';
@@ -39,8 +39,8 @@
   dock.querySelector('.mirror-cabinet-search input').oninput=()=>renderDock();
   const studioBridge=E('iframe','mirror-studio-bridge');studioBridge.title='Studio profile groups bridge';studioBridge.hidden=true;
   studioBridge.src='http://127.0.0.1:5185/#storage';document.body.append(studioBridge);
-  function requestGroups(){studioBridge.contentWindow?.postMessage({type:'scatter-request-profile-groups'},'http://127.0.0.1:5185');}
-  studioBridge.addEventListener('load',()=>{requestGroups();publishCustomManifest();});
+  function requestGroups(){if(profilesLoaded&&studioBridgeLoaded)studioBridge.contentWindow?.postMessage({type:'scatter-request-profile-groups'},'http://127.0.0.1:5185');}
+  studioBridge.addEventListener('load',()=>{studioBridgeLoaded=true;requestGroups();publishCustomManifest();});
   window.addEventListener('message',event=>{
     if(event.origin!=='http://127.0.0.1:5185'||event.source!==studioBridge.contentWindow||event.data?.type!=='rednote-studio-profile-groups')return;
     studioGroups=Array.isArray(event.data.groups)?event.data.groups.filter(g=>typeof g.id==='string'&&typeof g.name==='string'):[];
@@ -158,7 +158,7 @@
     } else {renderCustom();}
   }
   async function refreshProfiles() {
-    try {profiles=(await api('api/v2/profiles')).items||[];profilesLoaded=true;renderDock();refreshGroupNodes();}
+    try {profiles=(await api('api/v2/profiles')).items||[];profilesLoaded=true;renderDock();refreshGroupNodes();requestGroups();publishCustomManifest();}
     catch(error) {state.textContent=error.message;list.replaceChildren();}
   }
   canvas.addEventListener('dragover',event=>{if(event.dataTransfer.types.includes('application/x-scatter-mirror-profile')||event.dataTransfer.types.includes('application/x-scatter-mirror-group')||event.dataTransfer.types.includes('application/x-scatter-custom-asset')||event.dataTransfer.types.includes('application/x-scatter-class-tool')||event.dataTransfer.types.includes('application/x-scatter-catalog-node')){event.preventDefault();event.dataTransfer.dropEffect='copy';}},true);
@@ -250,7 +250,7 @@
     await Promise.all(allowed.map(file=>new Promise((resolve,reject)=>{const transaction=db.transaction('files','readwrite');transaction.objectStore('files').put({id:crypto.randomUUID(),name:file.name,type:file.type,bytes:file.size,blob:file,added_at:Date.now()});transaction.oncomplete=resolve;transaction.onerror=()=>reject(transaction.error);})))
     activeTab='custom';await renderCustom();await publishCustomManifest();state.textContent=allowed.length+' file'+(allowed.length===1?'':'s')+' saved to Custom Storage in this browser';
   }
-  async function publishCustomManifest(){try{const assets=await allAssets();studioBridge.contentWindow?.postMessage({type:'scatter-custom-manifest',items:assets.map(({id,name,type,bytes,added_at})=>({id,name,type,bytes,added_at}))},'http://127.0.0.1:5185');}catch{}}
+  async function publishCustomManifest(){if(!profilesLoaded||!studioBridgeLoaded)return;try{const assets=await allAssets();studioBridge.contentWindow?.postMessage({type:'scatter-custom-manifest',items:assets.map(({id,name,type,bytes,added_at})=>({id,name,type,bytes,added_at}))},'http://127.0.0.1:5185');}catch{}}
   function addSuppliedNode(entry,point=null){const node=makeBase(entry.kind,entry.title,430,520);node.customLibraryId=entry.id;node.image=entry.preview;node.localURL=entry.media;node.subtitle=entry.origin+' · supplied board media';node.story.custom_asset={library_id:entry.id,source:'supplied_board_library',category:entry.category};addNode(node,point,selectedBranch());}
   async function renderCustom() {
     list.replaceChildren();const upload=E('button','mirror-custom-upload','＋ Import music, video or image');upload.onclick=()=>dock.querySelector('.mirror-custom-input').click();list.append(upload);

@@ -1,5 +1,8 @@
 /**
- * Scatter & RedNote Spatial Engine v2 (Complete Phases 1–5 Architecture Bundle)
+ * Scatter & RedNote Spatial Engine v2 (experimental architecture sketch).
+ * This file is not imported by the active cinematic board and has no measured
+ * 50,000-node runtime claim. See docs/SCATTER_ENGINE_V3.md for current authority
+ * and rendering boundaries.
  *
  * Unites:
  * - Phase 1: Client-Side SQLite WASM + OPFS (`opfs-sahpool`) Worker, 1,000-Entity Batch Ingestion,
